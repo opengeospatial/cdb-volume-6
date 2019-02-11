@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 30* {set:cellbgcolor:#CACCCE}|req/openflight/damage-order +
+ +
+
+The ordering of damage states _SHALL_ be from left (normal state) to right (destroyed state). All intermediate states must represent increasingly damaged states from a slightly damaged state to an almost destroyed state. The number of states is left to the discretion of the modeler.{set:cellbgcolor:#FFFFFF}
+|===

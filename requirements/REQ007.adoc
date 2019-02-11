@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 7* {set:cellbgcolor:#CACCCE}|req/openflight/crs-models +
+ +
+
+CDB Models _SHALL_ use the same coordinate system convention as OpenFlightfootnote:[The DIS standard defines a different orientation for the axes of its coordinate system. DIS defines the X-axis as pointing to the front of the entity; the Y-axis pointing to its right and the Z-axis pointing down. Adoption of the DIS convention for use in the CDB standard has been rejected due to the fact that the majority of models in existence have been created using tools such as Creator. The CDB standard follows the same convention as the one used by these commercial tools. Note that if the CDB standard were to follow the DIS convention, modelers would be required to create and edit their models upside down with respect to the reference plane provided by their tool.]. The X-axis traverses the model from left to right, the Y-axis goes from the back to the front and the Z-axis extends from the bottom to the top of the model. {set:cellbgcolor:#FFFFFF}
+|===

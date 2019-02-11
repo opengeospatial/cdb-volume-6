@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 32* {set:cellbgcolor:#CACCCE}|req/openflight/articulation-node-rotation +
+ +
+
+The translation rate _SHALL_ be expressed in meters per second. The rotation rate _SHALL_ be expressed in degrees per second. Finally, the scaling rate _SHALL_ be expressesd in units per second. When not specified, a default rate of zero _SHALL_ be used. {set:cellbgcolor:#FFFFFF}
+|===

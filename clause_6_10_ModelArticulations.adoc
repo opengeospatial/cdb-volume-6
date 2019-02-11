@@ -1,0 +1,116 @@
+
+=== Model Articulations
+
+
+include::requirements/requirements_class08.adoc[]
+
+
+
+==== Definition
+
+An OpenFlight DOF node is used to implement the concept of a CDB Articulation. The node gives the modeler controls over all 9 degrees of freedom, translation, rotation and scaling on all 3 axes. Generally, only one degree of freedom is allowed at a time and most often, that single degree of freedom is a rotation about a single axis. However, the modeler is free to allow any translation, rotation and, even scaling; even though stretching an articulation does not usually produce a realistic effect.
+
+Since only one articulation is allowed per zone, the zone name is sufficient to identify and control the DOF node.
+
+A CDB Articulation node is an OpenFlight DOF node with attributes in the form of XML tags. <<XMLTagsforDOF>> below presents the syntax of the XML tags stored in the DOF node’s comment record.
+
+[#XMLTagsforDOF,reftext='Table 6-31']
+*Table 6-31: XML Tags for DOF*
+
+[source,xml]
+------
+<CDB:Articulation name="name" id="id">
+
+<Translation>
+
+<X rate="value" />
+
+<Y rate="value" />
+
+<Z rate="value" />
+
+</Translation>
+
+<Rotation>
+
+<X rate="value" />
+
+<Y rate="value" />
+
+<Z rate="value" />
+
+</Rotation>
+
+<Scaling>
+
+<X rate="value" />
+
+<Y rate="value" />
+
+<Z rate="value" />
+
+</Scaling>
+
+</CDB:Articulation>
+------
+
+The above XML tag is necessary in two circumstances:
+
+1.  The articulation represents a DIS Articulated Part.
+2.  The articulation is to be animated automatically.
+
+A CDB Articulation node has an optional name that is used to self-document the articulation. The optional identifier provides the corresponding DIS Articulated Part. It is suggested to use a name inspired from the DIS Articulated Part ID, when the identifier is supplied. For instance, DIS identifies as Primary Gun 1 the articulated part whose ID is 4416. That example would generate the following XML tags:
+
+[source,xml]
+------
+<CDB:Articulation name="Primary Gun 1" id="4416" />
+------
+
+Section 4.7.3 in reference [4] provides a list of DIS Articulated Part IDs.
+
+It is possible to specify an optional Rate-of-Change for each Degree of Freedom along their X, Y, and Z axes for Translation, Rotation, and Scaling. The translation rate is expressed in meters per second. The rotation rate is expressed in degrees per second. Finally, the scaling rate is in units per second. When not specified, a default rate of zero is assumed.
+
+include::requirements/REQ032.adoc[]
+
+
+For instance, a primary radar antenna that rotates at a rate of 10 degrees per second about its Z-axis would require the following XML tags:
+
+[source,xml]
+------
+<CDB:Articulation name="Primary Radar 1" id="5376">
+
+<Rotation>
+
+<Z rate="10"/>
+
+</Rotation>
+
+</CDB:Articulation>
+------
+
+Another example, to illustrate how to attribute a rotating wind mill; assuming the mill rotates about the Y-axis at a rate of 5 degrees per second:
+
+[source,xml]
+------
+<CDB:Articulation>
+
+<Rotation>
+
+<Y rate="5"/>
+
+</Rotation>
+
+</CDB:Articulation>
+------
+
+include::requirements/REQ033.adoc[]
+
+
+include::requirements/REQ034.adoc[]
+
+
+==== Usage
+
+===== Rotating Parts
+
+A common problem in simulation is to correlate the linear speed of a model with the angular speed of its wheels. More generally, the client device simulation models often require the dimension of rotating parts. This information can be obtained from the zone extent; the bounding box surrounding a zone provides the dimension of rotating parts.

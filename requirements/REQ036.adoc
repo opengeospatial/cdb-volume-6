@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 36* {set:cellbgcolor:#CACCCE}|req/openflight/model-vendor-attributes +
+ +
+
+The definition of vendor attributes _SHALL_ be stored in Vendor_Attributes.xml{set:cellbgcolor:#FFFFFF}
+|===

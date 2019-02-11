@@ -1,0 +1,42 @@
+
+=== Model Identifiers
+
+==== GSModel and GTModel Identifier
+
+Although the name of the global zone of a GS or GT model is arbitrary, it is strongly suggested to use the value of their MODL attribute to name the global zone.
+
+For instance, a GTModel stored in a file called
+
+[source,txt]
+----
+D500_S001_T001_AL015_004_Castle.flt
+----
+
+Would have its global zone identified like this:
+
+[source,xml]
+----
+<CDB:Zone name="Castle"/>
+----
+
+==== MModel Identifier
+
+The MModel identifier is the common name of the moving model or the name of its part. The actual name is not covered by the standard. An example of a MModel identifier is “M1A2” for the M1 Abrams tank whose DIS Entity Type is 1_1_225_1_1_3_0.
+
+For instance, a moving model stored in a file called
+
+[source,txt]
+----
+D600_S001_T001_1_1_225_1_1_3_0.flt
+----
+
+Would have its global zone identified like this:
+
+[source,xml]
+----
+<CDB:Zone name="M1A2"/>
+----
+
+==== 2DModel Identifier
+
+A T2DModel itself does not need to be identified per se. However, it is required to identify individual 2DModels inside a T2DModel. This is done by assigning a unique zone name to each 2DModel. In addition, a 2DModel must have the same zone name across LODs and across tiles. Note that when a 2DModel is clipped by tile boundaries, each of the clipped model fragments will appear in distinct OpenFlight files of the T2DModel Dataset. When clipped, the 2DModel Identifier must appear once, in each of the T2DModel Tile-LODs. This is necessary to identify the parts of a 2DModel that straddle multiple Tile-LODs.

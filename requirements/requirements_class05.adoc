@@ -1,0 +1,8 @@
+[cols="1,4",width="90%"]
+|===
+2+|*Requirements Class* – Model Levels of Detail{set:cellbgcolor:#CACCCE}
+2+|/req/openflight/model-lod {set:cellbgcolor:#FFFFFF}
+|Target type |Operations
+|Dependency |Openflight Specification
+|*Requirement 26* {set:cellbgcolor:#CACCCE} |/req/openflight/significant-sizes {set:cellbgcolor:#FFFFFF}
+|===

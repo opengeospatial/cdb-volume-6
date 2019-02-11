@@ -1,0 +1,11 @@
+[cols=",,",width="100%"]
+|=================================================================
+|*Conformance Class* 2+|*/conf/openflight/header-crs*
+|*Requirements Class* 2+|/req/openflight/ crs
+|*Dependency* 2+|Openflight Specification
+|*Test 1* 2+|/conf/header-crs/crs
+| |*Requirement* |/req/openflight/model-global-zone
+| |*Test purpose* |Verify that the CRS codes are properly set
+| |*Test method* |Pass if the values are set to the default of “0”
+| |*Test type* |Conformance
+|=================================================================

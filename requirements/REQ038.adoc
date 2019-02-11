@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 38* {set:cellbgcolor:#CACCCE}|req/openflight/quarterly-textures +
+ +
+
+The textures _SHALL_ be provided as a complete set, i.e., it is assumed that all 4 textures of the same kind (i.e., all four textures have their component selector 1 set to 003) and are all present in the model’s texture directory. {set:cellbgcolor:#FFFFFF}
+|===

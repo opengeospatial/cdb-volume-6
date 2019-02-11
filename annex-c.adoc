@@ -1,0 +1,382 @@
+[appendix]
+:appendix-caption: Annex
+==  Summary of Changes Version 15.7
+
+
+[red]#*CDB OpenFlight Readers:*# This section is not applicable to CDB-compliant OpenFlight readers. The first version of the CDB standard is based on OpenFlight v16.0.
+
+[[AnnexC_Overview]]
+=== C - Overview
+
+
+This section describes the changes in the OpenFlight Scene Description between versions 15.6 and 15.7. OpenFlight version 15.7 coincides with MultiGen Creator versions 2.4 through 2.5.1 and the OpenFlight API versions 2.4 through 2.5.1. The changes made for this version are:
+
+<<AnnexB_ContinuationRecord>>
+
+<<AnnexC_HeaderRecord>>
+
+<<AnnexC_MeshRecord>>
+
+<<AnnexC_LocalVertexPoolRecord>>
+
+<<AnnexC_MeshPrimitiveRecord>>
+
+<<AnnexC_MultitextureRecord>>
+
+<<AnnexC_UVListRecord>>
+
+<<AnnexC_TextureAttributeFile>>
+
+[[AnnexC_FormatChanges]]
+=== Format Changes
+
+[[AnnexC_ContinuationRecord]]
+==== Continuation Record
+
+All OpenFlight records begin with a 4 byte sequence. The first two bytes identify the record (opcode) and the second two bytes specify the length of the record. Given this regular record structure, the length of all OpenFlight records is limited to the largest value that can be encoded with 2 bytes or 16 bits (65535). In most cases, this maximum size is sufficient but there are cases where it is not. For fixed size records, this is not a problem. For variable size records, this lim­itation is being addressed with this version.
+
+A new record, called the continuation record is introduced in this version to accommodate vari­able size records in the OpenFlight Scene Description. The continuation record is used to “con­tinue” a record in the OpenFlight Scene Description file stream. It would appear in the stream immediately following the record that it “continues” (the record that is being continued will be referred to as the “original” record). The data contained in the continuation record is defined by the original record and is assumed to be directly appended onto the content of the original record.
+
+NOTE: Multiple continuation records may follow a record, in which case all continuation records would be appended (in sequence) to the original record.
+
+
+.Continuation Record - New record for OpenFlight 15.7
+[cols=",,,",]
+|=======================================================================================================================================================================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Unsigned Int |0 |2 |Continuation Record Opcode 23
+|Unsigned Int |2 |2 |Length - length of the record
+|Varies |4 |Length-4 |Depends on the original record. The contents of this field are to be appended directly to the end of the original record contents (before the original record contents are parsed)
+|=======================================================================================================================================================================================================
+
+[[AnnexC_HeaderRecord]]
+==== Header Record
+
+New attributes have been appended to the end of the existing header record (see <<AnnexB_HeaderRecord>>). The following fields were added at the specified offsets in the header record.
+
+.Header Record changes for OpenFlight 15.7 - New Fields
+[cols=",,,",]
+|=========================================================================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Double |284 |8 |Delta z to place database (used in conjunction with exist­ing Delta x and Delta y values)
+|Double |292 |8 |Radius (distance from database origin to farthest corner)
+|Unsigned Int |300 |2 |Next Mesh node ID number
+|Unsigned Int |302 |2 |Reserved
+|=========================================================================================================
+
+[[AnnexC_MeshNodes]]
+=== Mesh Nodes
+
+A mesh node defines a set of geometric primitives that share attributes and vertices. In previous versions of OpenFlight, the fundamental geometric construct was the polygon. Each polygon has a unique set of attributes and vertices. Meshes are used to represent “sets” of related poly­gons, each sharing common attributes and vertices. Using a mesh, related polygons can be rep­resented in a much more compact format. Each mesh will share one set of “polygon” attributes (color, material, texture, etc.), a common “vertex pool” and one or more geometric primitives that use the shared attributes and vertices. Using a mesh you can represent triangle strips, trian­gle fans, quadrilateral strips and indexed face sets.
+
+A mesh node is defined by three distinct record types:
+
+•_Mesh Record_ - defines the “polygon” attributes associated to all geometric primitives of the mesh.
+
+•_Local Vertex Pool Record_ - defines the set of vertices that are referenced by the geometric primitives of the mesh.
+
+•_Mesh Primitive Record_ - defines a geometric primitive (triangle-strip, triangle-fan, quadrilateral-strip or indexed face set) for the mesh.
+
+A mesh node consists of one mesh record, one local vertex pool record, and one or more mesh primitive records. The mesh primitive records are delimited by push and pop control records as shown in the following example:
+
+[source,txt]
+----
+MESH
+LOCAL VERTEX POOL
+PUSH MESH
+PRIMITIVE
+MESH PRIMITIVE
+...
+MESH PRIMITIVE
+POP
+----
+
+[[AnnexC_MeshRecord]]
+=== Mesh Record
+
+The mesh record is the primary record of a mesh node and defines the common “face-like” at­tributes associated to all geometric primitives of the mesh. These attributes are identical to those of the face record. See <<AnnexB_FaceRecord>>.
+
+.Mesh Record- New record for OpenFlight 15.7
+[cols=",,,",]
+|=============================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |0 |2 |Mesh Opcode 84
+|Unsigned Int |2 |2 |Length - length of the record
+|Char |4 |8 |7 char ASCII ID; 0 terminates
+|Int |12 |4 |IR color code
+|Int |16 |2 |Relative priority
+|Int |18 |1 |Draw type
+| | | |0 = Draw solid with backface culling
+| | | |1 = Draw solid, no backface culling
+| | | |2 = Draw wireframe
+| | | |3 = Draw wireframe and close
+| | | |4 = Surround with wireframe in alternate color
+| | | |8 = Omnidirectional light
+| | | |9 = Unidirectional light
+| | | |10 = Bidirectional light
+|Int |19 |1 |Texture white = if TRUE, draw textured face white
+|Unsigned Int |20 |2 |Color name index
+|Unsigned Int |22 |2 |Alternate color name index
+|Int |24 |1 |Reserved
+|=============================================================
+
+.Mesh Record - New record for OpenFlight 15.7  (Continued)
+[cols=",,,",]
+|=========================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |25 |1 |Template (billboard)
+| | | |0 = Fixed, no alpha blending
+| | | |1 = Fixed, alpha blending
+| | | |2 = Axial rotate with alpha blending
+| | | |4 = Point rotate with alpha blending
+|Int |26 |2 |Detail texture pattern index, -1 if none
+|Int |28 |2 |Texture pattern index, -1 if none
+|Int |30 |2 |Material index, -1 if none
+|Int |32 |2 |Surface material code (for DFAD)
+|Int |34 |2 |Feature ID (for DFAD)
+|Int |36 |4 |IR material code
+|Unsigned Int |40 |2 |Transparency
+| | | |0 = Opaque
+| | | |65535 = Totally clear
+|Unsigned Int |42 |1 |LOD generation control
+|Unsigned Int |43 |1 |Line style index
+|Int |44 |4 |Flags (bits from left to right)
+| | | |0 = Terrain
+| | | |1 = No color
+| | | |2 = No alternate color
+| | | |3 = Packed color
+| | | |4 = Terrain culture cutout (footprint)
+| | | |5 = Hidden, not drawn
+| | | |6-31 = Spare
+|Unsigned Int |48 |1 |Light mode
+| | | |0 = Use mesh color, not illuminated
+| | | |1 = Use vertex colors, not illuminated
+| | | |2 = Use mesh color and vertex normals
+| | | |3 = Use vertex colors and vertex normals
+|Char |49 |7 |Reserved
+|Unsigned Int |56 |4 |Packed color, primary (a, b, g, r)
+|Unsigned Int |60 |4 |Packed color, alternate (a, b, g, r)
+|Int |64 |2 |Texture mapping index
+|Int |66 |2 |Reserved
+|Unsigned Int |68 |4 |Primary color index
+|Unsigned Int |72 |4 |Alternate color index
+|Int |76 |4 |Reserved
+|=========================================================
+
+[[AnnexC_LocalVertexPoolRecord]]
+=== Local Vertex Pool Record
+
+This record defines a set of vertices that is referenced by the geometry (primitives) of the mesh.
+
+NOTE: Currently the Local Vertex Pool is used exclusively in the context of mesh nodes, but it is designed in a general way so that it may appear in other contexts in future versions of the OpenFlight Scene Description.
+
+.Local Vertex Pool Record- New record for OpenFlight 15.7
+[cols=",,,,",]
+|=======================================================================================================================================================================================================================================================================================
+|*Data Type* |*Offset* |*Length* 2+|*Description*
+|Int |0 |2 2+|Local Vertex Pool Opcode 85
+|Unsigned Int |2 |2 2+|Length - length of the record +
+Note: Since the length of this record is represented by an un­signed short, the maximum length of the vertex pool is 216- 1 (or 65535 bytes). If the entire vertex pool cannot fit into this size, one or more continuation records will follow. (See <<AnnexB_ContinuationRecord>>.)
+|Unsigned Int |4 |4 2+|Number of vertices - number of vertices in the local vertex pool
+|Unsigned Int |8 |4 2+|Attribute mask - Bit mask indicating what kind of vertex infor­mation is specified for each vertex in the local vertex pool. Bits are ordered from left to right as follows:
+| | | |Bit # |Description
+| | | |0 |Has Position - if set, data for each vertex in will include x, y, and z coordinates (3 doubles)
+| | | |1 |Has Color Index - if set, data for each vertex will in­clude a color value that is a color table index (1 int)
+| | | |2 |Has RGB Color - if set, data for each vertex will include a color value that is a packed RGB color (1 int)
+| | | 2+|Note: Bits 1and 2 are mutually exclusive - a vertex can have ei­ther color index or RGB color value or neither, but not both.
+| | | |3 |Has Normal - if set, data for each vertex will include a normal (3 floats)
+| | | |4 |Has Base UV - if set, data for each vertex will include uv texture coordinates for the base texture (2 floats)
+| | | |5 |Has UV Layer 1 - if set, data for each vertex will include uv texture coordinates for layer 1 (2 floats)
+| | | |6 |Has UV Layer 2 - if set, data for each vertex will include uv texture coordinates for layer 2 (2 floats)
+| | | |7 |Has UV Layer 3 - if set, data for each vertex will include uv texture coordinates for layer 3 (2 floats)
+| | | |8 |Has UV Layer 4 - if set, data for each vertex will include uv texture coordinates for layer 4 (2 floats)
+| | | |9 |Has UV Layer 5 - if set, data for each vertex will include uv texture coordinates for layer 5 (2 floats)
+| | | |10 |Has UV Layer 6 - if set, data for each vertex will include uv texture coordinates for layer 6 (2 floats)
+| | | |11 |Has UV Layer 7 - if set, data for each vertex will include uv texture coordinates for layer 7 (2 floats)
+| | | |12-31 |Spare
+|=======================================================================================================================================================================================================================================================================================
+
+.Local Vertex Pool Record - New record for OpenFlight 15.7  (Continued)
+[cols=",,,",]
+|========================================================================================================================================================================
+4+|Then beginning at offset 12, the following fields are repeated for each vertex in the local ver­tex pool, depending on the bits set in the Attribute mask field above: +
+In the fields listed below, N ranges from 0 to Number of vertices - 1.
+|Double |Varies |8*3 |CoordinateN - Coordinate of vertex N (x, y, z) - present if At­tribute mask includes Has Position.
+|Unsigned Int |Varies |4 |colorN - Color for vertex N - present if Attribute mask includes Has Color Index or Has RGB Color. +
+If Has Color Index, specifies color table index. +
+If Has RGB Color, 4 bytes specify (a, b, g, r) values (alpha ignored).
+|Float |Varies |4*3 |normal**N** - Normal for vertex N (i, j, k) - present if Attribute mask includes Has Normal.
+|Float |Varies |4*2 |uvBaseN - Texture coordinates (u, v) for base texture layer of vertex N - present if Attribute mask includes Has Base UV.
+|Float |Varies |4*2 |uv1N - Texture coordinates (u, v) for layer 1 of vertex N - present if Attribute mask includes Has UV Layer 1.
+|Float |Varies |4*2 |uv2N - Texture coordinates (u, v) for layer 2 of vertex N - present if Attribute mask includes Has UV Layer 2.
+|Float |Varies |4*2 |uv3N - Texture coordinates (u, v) for layer 3 of vertex N - present if Attribute mask includes Has UV Layer 3.
+|Float |Varies |4*2 |uv4N - Texture coordinates (u, v) for layer 4 of vertex N - present if Attribute mask includes Has UV Layer 4.
+|Float |Varies |4*2 |uv5N - Texture coordinates (u, v) for layer 5 of vertex N - present if Attribute mask includes Has UV Layer 5.
+|Float |Varies |4*2 |uv6N - Texture coordinates (u, v) for layer 6 of vertex N - present if Attribute mask includes Has UV Layer 6.
+|Float |Varies |4*2 |uv7N - Texture coordinates (u, v) for layer 7 of vertex N - present if Attribute mask includes Has UV Layer 7.
+|========================================================================================================================================================================
+
+[[AnnexC_MeshPrimitiveRecord]]
+=== Mesh Primitive Record
+
+This record defines a geometric primitive (triangle strip, triangle fan, quadrilateral strip, or indexed polygon) for a mesh.
+
+.Mesh Primitive Record - New record for OpenFlight 15.7
+[cols=",,,",]
+|=======================================================================================================================================================================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |0 |2 |Mesh Primitive Opcode 86
+|Unsigned Int |2 |2 |Length - length of the record
+|Int |4 |2 |Primitive Type - specifies how the vertices of the prim­itive are interpreted
+| | | |1 = Triangle Strip
+| | | |2 = Triangle Fan
+| | | |3 = Quadrilateral Strip
+| | | |4 = Indexed Polygon
+|Unsigned Int |6 |2 |Index Size - specifies the length (in bytes) of each of the vertex indices that follow - will be either 1, 2, or 4
+|Unsigned Int |8 |4 |Vertex Count - number of vertices in this primitive.
+4+|The following field is repeated for each vertex referenced by the mesh primitive. These vertices are inter­preted according to Primitive Type. In the field below, N ranges from 0 to Vertex Count - 1.
+|Int |12+(N*Index Size) |Index Size |IndexN - Index of vertex N of the mesh primitive.
+|=======================================================================================================================================================================================================
+
+
+Each mesh primitive is represented using the Mesh Primitive record above. The following descriptions explain how the vertices of each primitive type are interpreted as geometry:
+
+•*Triangle Strip* - This mesh primitive defines a connected group of triangles in the context of the en­closing mesh. Each triangle shares the “polygon” attributes defined by the enclosing mesh. This prim­itive contains a sequence of indices that reference vertices from the local vertex pool. One triangle is defined for each vertex presented after the first two vertices. For odd n, vertices n, n+1, and n+2 de­fine triangle n. For even n, vertices n+1, n, and n+2 define triangle n. The first triangle is n=1. The first vertex in the vertex pool is n=1. N vertices represent N-2 triangles.
+
+•*Triangle Fan* - Like the Triangle Strip, this mesh primitive also defines a connected group of trian­gles in the context of the enclosing mesh. Each triangle shares the “polygon” attributes defined by the enclosing mesh. This primitive contains a sequence of indices that reference vertices from the local vertex pool. One triangle is defined for each vertex presented after the first two vertices. Vertices 1, n+1, and n+2 define triangle n. The first triangle is n=1. The first vertex in the vertex pool is n=1. N vertices represent N-2 triangles.
+
+•*Quadrilateral Strip* - This mesh primitive defines a connected group of quadrilaterals in the context of the enclosing mesh. Each quadrilateral shares the “polygon” attributes defined by the enclosing mesh. This primitive contains a sequence of indices that reference vertices from the local vertex pool. One quadrilateral is defined for each pair of vertices presented after the first pair. Vertices 2n-1, 2n, 2n+2, and 2n+1 define quadrilateral n. The first quadrilateral is n=1. The first vertex in the vertex pool is n=1. N vertices represent (N/2)-1 quadrilaterals.
+
+•*Indexed Polygon* -This mesh primitive defines a single polygon in the context of the enclosing mesh. This primitive is similar to the other mesh primitives in that it also shares the polygon attributes of the enclosing mesh. It is different from the other mesh primitive types in that while triangle strips/fans and quadrilateral strips describe a set of connected triangles/quadrilaterals, the indexed polygon defines a single polygon. This primitive contains a sequence of indices that reference vertices from the local vertex pool. One polygon is defined by the sequence of vertices in this record. N vertices represent 1 N-sided closed polygon or 1 (N-1)-sided unclosed polygon.
+
+[[AnnexC_Multitexture]]
+=== Multitexture
+
+OpenFlight supports 8 textures per polygon or mesh as well as 8 uv's per vertex. The current texture information stored on the polygon is referred to as “the base texture” or “texture layer 0”. Each additional texture is referred to as “texture layer N”. Therefore, to support 8 textures per polygon, a base texture is required as well as 7 additional texture layers. The additional tex­ture layers for each polygon, mesh, and vertex will be represented in ancillary records at the Face, Mesh, and Vertex primary node levels as shown in the following example:
+
+[source,txt]
+----
+FACE
+MULTITEXTURE
+PUSH
+VERTEX LIST
+UV LIST
+POP
+----
+
+The records that are used to represent multitexture in the OpenFlight file are described in the following sections.
+
+[[AnnexC_MultitextureRecord]]
+==== Multitexture Record
+
+The multitexture record is an ancillary record of face and mesh nodes. It specifies the texture layer information for the face or mesh.
+
+.Multitexture Record - New record for OpenFlight 15.7
+[cols=",,,,",]
+|==============================================================================================================================================================================================================================================================================================
+|*Data Type* |*Offset* |*Length* 2+|*Description*
+|Unsigned Int |0 |2 2+|Multitexture Opcode 52
+|Unsigned Int |2 |2 2+|Length - length of the record
+|Int |4 |4 2+|Attribute mask - Bit mask indicating what kind of multitexture information is present in this record. Bits are ordered from left to right as follows:
+| | | |Bit # |Description
+| | | |0 |Has Layer 1 - if this bit is set, multitexture infor­mation for texture layer 1 is present.
+| | | |1 |Has Layer 2 - if this bit is set, multitexture infor­mation for texture layer 2 is present.
+| | | |2 |Has Layer 3 - if this bit is set, multitexture infor­mation for texture layer 3 is present.
+| | | |3 |Has Layer 4 - if this bit is set, multitexture infor­mation for texture layer 4 is present.
+| | | |4 |Has Layer 5 - if this bit is set, multitexture infor­mation for texture layer 5 is present.
+| | | |5 |Has Layer 6 - if this bit is set, multitexture infor­mation for texture layer 6 is present.
+| | | |6 |Has Layer 7 - if this bit is set, multitexture infor­mation for texture layer 7 is present.
+| | | |7-31 |Spare
+5+|The following fields are repeated for each multitexture layer that is specified as present by the bits set in the Attribute mask field above. This mechanism allows for “sparse” multitexture layer information to be present and does not require that the information present be contiguous.
+|Unsigned Int |Varies |2 2+|textureN - Texture index for texture layer N
+|Unsigned Int |Varies |2 2+|effectN - Multitexture effect for texture layer N
+| | | 2+|0 = Texture environment
+| | | 2+|1 = Bump map
+| | | 2+|2-100 = Reserved by MultiGen-Paradigm
+| | | 2+|>100 = user (runtime) defined
+|Unsigned Int |Varies |2 2+|mappingN - Texture mapping index for texture layer N
+|Unsigned Int |Varies |2 2+|
+dataN - Texture data for layer N. This is user defined.
+
+For example, it may be used as a blend percentage or color or any other data needed by the runtime to describe texture layer N
+
+|==============================================================================================================================================================================================================================================================================================
+
+[[AnnexC_UVListRecord]]
+==== UV List Record
+
+The uv list record is an ancillary record of vertex nodes. This record (if present) always follows the vertex list or morph vertex list record and contains texture layer information for the vertices represented in the vertex list record it follows.
+
+.UV List Record - New record for OpenFlight 15.7
+[cols=",,,,",]
+|================================================================================================================================================================
+|*Data Type* |*Offset* |*Length* 2+|*Description*
+|Unsigned Int |0 |2 2+|UV List Opcode 53
+|Unsigned Int |2 |2 2+|Length - length of the record
+|Int |4 |4 2+|Attribute mask - Bit mask indicating what kind of multitexture information is present in this record. Bits are ordered from left to right as follows:
+| | | |Bit # |Description
+| | | |0 |Has Layer 1 - if set, uvs for layer 1 are present
+| | | |1 |Has Layer 2 - if set, uvs for layer 2 are present
+| | | |2 |Has Layer 3 - if set, uvs for layer 3 are present
+| | | |3 |Has Layer 4 - if set, uvs for layer 4 are present
+| | | |4 |Has Layer 5 - if set, uvs for layer 5 are present
+| | | |5 |Has Layer 6 - if set, uvs for layer 6 are present
+| | | |6 |Has Layer 7 - if set, uvs for layer 7 are present
+| | | |7-31 |Spare
+|================================================================================================================================================================
+
+
+The following fields are repeated for each vertex contained in the corresponding vertex list or morph vertex list record.
+
+If this uv list record follows a vertex list record, the following fields are repeated for each layer present (as specified by the bits set in the Attribute mask field).
+
+
+[cols=",,",]
+|=================================================
+|*Data Type* |*Offset* |*Description*
+|Float |4 |ui, N - Texture U for vertex i, layer N
+|Float |4 |vi, N - Texture V for vertex i, layer N
+|=================================================
+
+
+If this uv list record follows a morph vertex list record, the following fields are repeated for each layer present (as specified by the bits set in the Attribute mask field).
+
+
+[cols=",,",]
+|=============================================================
+|*Data Type* |*Offset* |*Description*
+|Float |4 |u0i, N - Texture U for the 0% vertex i, layer N
+|Float |4 |v0i, N - Texture V for the 0% vertex i, layer N
+|Float |4 |u100i, N - Texture U for the 100% vertex i, layer N
+|Float |4 |v100i, N - Texture V for the 100% vertex i, layer N
+|=============================================================
+
+[[AnnexC_TextureAttributeFile]]
+=== Texture Attribute File
+
+[[AnnexC_Subtexture]]
+==== Subtexture
+
+Subtexture definitions have been added to the end of the Texture Attribute File (see <<AnnexB_TextureAttributeFiles>>). After all the geospecific control points are listed, the following subtexture information now appears:
+
+.Texture Attribute File Format changes for OpenFlight 15.7 - New Fields
+[cols=",,",]
+|==========================================================
+|*Data Type* |*Length* |*Description*
+|Int |4 |Number of subtextures
+|==========================================================
+
+If the value of the Number of subtextures field is greater than 0-, the following fields are repeated for each subtexture in the texture attribute file.
+
+The Left, Bottom, Right and Top fields are all measured in texels.
+
+
+[cols=",,",]
+|===========================================================
+|*Data Type* |*Length* |*Description*
+|Char |32 |NameN - name of subtexture N; 0 terminates
+|Int |4 |LeftN - Coordinate of left edge of subtexture N
+|Int |4 |BottomN - Coordinate of bottom edge of subtexture N
+|Int |4 |RightN - Coordinate of right edge of subtexture N
+|Int |4 |TopN - Coordinate of top edge of subtexture N
+|===========================================================

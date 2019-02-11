@@ -1,0 +1,13 @@
+[cols="1,4",width="90%"]
+|===
+2+|*Requirements Class*  – Modeling Conventions{set:cellbgcolor:#CACCCE}
+2+|/req/model-conventions{set:cellbgcolor:#FFFFFF}
+|Target type |Operations
+|Dependency |OpenFlight Specification
+|*Requirement 7* {set:cellbgcolor:#CACCCE} |/req/openflight/crs-models {set:cellbgcolor:#FFFFFF}
+|*Requirement 8* {set:cellbgcolor:#CACCCE} |/req/openflight/model-origin {set:cellbgcolor:#FFFFFF}
+|*Requirement 9* {set:cellbgcolor:#CACCCE} |/req/openflight/t2-model-coordinates {set:cellbgcolor:#FFFFFF}
+|*Requirement 10* {set:cellbgcolor:#CACCCE} |/req/openflight/roll-pitch-yaw {set:cellbgcolor:#FFFFFF}
+|*Requirement 11* {set:cellbgcolor:#CACCCE} |/req/openflight/geometry {set:cellbgcolor:#FFFFFF}
+|*Requirement 12* {set:cellbgcolor:#CACCCE} |/req/openflight/geometry-layer-constraint {set:cellbgcolor:#FFFFFF}
+|===

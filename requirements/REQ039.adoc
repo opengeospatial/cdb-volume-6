@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 39* {set:cellbgcolor:#CACCCE}|req/openflight/monthly-textures +
+ +
+
+The textures _SHALL_ be provided as a complete set, i.e., it is assumed that all the 12 textures are of the same kind (i.e., all twelve textures have their component selector CS1 = 002) and are all present in the model’s texture directory.{set:cellbgcolor:#FFFFFF}
+|===

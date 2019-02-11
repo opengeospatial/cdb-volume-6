@@ -1,0 +1,711 @@
+[appendix]
+:appendix-caption: Annex
+== Summary of Changes Version 15.8
+
+[[AnnexD_Overview]]
+=== D - Overview
+
+
+This section describes the changes in the OpenFlight Scene Description between versions 15.7 and 15.8 as well as the errors contained in previous versions of this document that have been corrected in this version.
+
+OpenFlight version 15.8 coincides with MultiGen Creator version 2.6 and the OpenFlight API version 2.6. The changes made for this version are:
+
+<<AnnexD_HeaderRecord>>
+
+<<AnnexD_GroupRecord>>
+
+<<AnnexD_LevelofDetailRecord>>
+
+<<AnnexD_ExternalReferenceRecord>>
+
+<<AnnexD_IndexedStringRecord>> (for Switch nodes)
+
+<<AnnexD_FaceRecord>>
+
+<<AnnexD_MeshRecord>>
+
+<<AnnexD_LocalVertexPoolRecord>>
+
+<<AnnexD_VertexPaletteRecords>>
+
+<<AnnexD_LightPointAppearancePaletteRecord>>
+
+<<AnnexD_LightPointAnimationRecord>>
+
+<<AnnexD_IndexedLightPointRecord>>
+
+<<AnnexD_LightPointSystemRecord>>
+
+<<AnnexD_TextureMappingPaletteRecord>>
+
+Also new in this version of the document is the addition of the “offset” column in the record format tables.
+
+[[AnnexD_DocumentCorrections]]
+=== Document Corrections
+
+
+The errors corrected in this version of the document are described in the sections that follow.
+
+[[AnnexD_TextRecord]]
+==== Text Record
+
+The Reserved field, previously omitted in prior versions of this document, has been documented in the specification for OpenFlight 15.8. The offsets of fields following this field have been adjusted accordingly.
+
+.Text Record error corrected in OpenFlight 15.8 specification - Reserved field (documented)
+[cols=",,,",]
+|=============================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |16 |4 |Reserved
+|=============================================================
+
+The Draw bold field, previously omitted in prior versions of this document, has been documented in the specification for OpenFlight 15.8. The offsets of fields following this field have been adjusted accordingly.
+
+.Text Record error corrected in OpenFlight 15.8 specification - Draw bold field (documented)
+[cols=",,,",]
+|=============================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |304 |4 |Draw bold
+|=============================================================
+
+For a complete description of the text record, see <<AnnexB_TextRecord>>.
+
+[[AnnexD_CATRecord]]
+==== CAT Record
+
+The Relative priority field, included erroneously in the previous version of this document, has been removed from the specification for OpenFlight 15.8. The offsets of fields following this field have been adjusted accordingly.
+
+.CAT Record error corrected in OpenFlight 15.8 specification - Relative priority field (removed)
+[cols=",,,",]
+|============================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |20 |2 |Relative priority
+|============================================================
+
+
+The Feature ID field, included erroneously in the previous version of this document, has been removed from the specification for OpenFlight 15.8. The offsets of fields following this field have been adjusted accordingly.
+
+.CAT Record error corrected in OpenFlight 15.8 specification - Feature ID field (removed)
+[cols=",,,",]
+|============================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |38 |2 |Relative priority
+|============================================================
+
+The Reserved field, previously omitted in prior version of this document, has been documented in the specification for OpenFlight 15.8. The offsets of fields following this field have been adjusted accordingly.
+
+.CAT Record error corrected in OpenFlight 15.8 specification - Reserved field (documented)
+[cols=",,,",]
+|============================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |60 |4 |Reserved
+|============================================================
+
+[[AnnexD_FormatChanges]]
+=== Format Changes
+
+[[AnnexD_HeaderRecord]]
+==== Header Record
+
+The header record has been modified to include additional projection attributes. New attributes have been appended to the end of the existing header record and some of the existing fields have new values possible.
+
+The following fields were added to the end (at the specified offsets) of the header record.
+
+.Header Record changes for OpenFlight15.8 - New Fields
+[cols=",,,",]
+|=======================================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Unsigned Int |302 |2 |Next Light Point System ID number
+|Int |304 |4 |Reserved
+|Double |308 |8 |Earth major axis (for user defined ellipsoid) in meters
+|Double |316 |8 |Earth minor axis (for user defined ellipsoid) in meters
+|=======================================================================
+
+
+The Projection type field has been changed to include two new possible values, Geocentric and Geodetic as shown here. New values are shown in *bold font*:
+
+.Header Record changes for OpenFlight15.8 - Projection type field
+[cols=",,,",]
+|==============================================
+|*Data Type* |*Offset* |*Length* 2|*Description*
+|Int |92 |4 |Projection type
+| | | |0 = Flat earth
+| | | |1 = Trapezoidal
+| | | |2 = Round earth
+| | | |3 = Lambert
+| | | |4 = UTM
+| | | |*5 = Geocentric*
+| | | |*6 = Geodetic*
+|==============================================
+
+The Earth ellipsoid model field has been changed to include one new possible value, User defined ellipsoid as shown here. This new value is shown in *bold font*.
+
+.Header Record changes for OpenFlight15.8 - Earth ellipsoid field
+[cols=",,,",]
+|==============================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |268 |4 |Earth ellipsoid model
+| | | |0 = WGS 1984
+| | | |1 = WGS 1972
+| | | |2 = Bessel
+| | | |3 = Clarke 1866
+| | | |4 = NAD 1927
+| | | |*5 = User defined ellipsoid*
+|==============================================
+
+A field, previously labeled “Reserved” in prior versions of this document, has been described. It is the UTM zone for UTM projections and is shown here.
+
+.Header Record changes for OpenFlight15.8 - UTM zone field
+[cols=",,,",]
+|======================================================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |276 |2 |UTM zone (for UTM projections - negative value means Southern hemisphere)
+|======================================================================================
+
+
+For a complete description of the header record, see <<AnnexB_HeaderRecord>> .
+
+[[AnnexD_GroupRecord]]
+==== Group Record
+
+The group record has been modified to include additional animation attributes. New attributes have been appended to the end of the existing group record and some of the existing fields have new values possible.
+
+The following fields were added to the end (at the specified offsets) of the group record.
+
+.Group Record changes for OpenFlight15.8 - New Fields
+[cols=",,,",]
+|==============================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |32 |4 |Loop count
+|Float |36 |4 |Loop duration in seconds
+|Float |40 |4 |Last frame duration in seconds
+|==============================================
+
+
+The Flags field has been changed to include a new bit which can be used to specify backwards animations as shown here. The new bit is shown in *bold font*.
+
+.Group Record changes for OpenFlight15.8 - Flags field
+[cols=",,,",]
+|==============================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |16 |4 |Flags (bits, from left to right)
+| | | |0 = Reserved
+| | | |1 = Forward animation
+| | | |2 = Swing animation
+| | | |3 = Bounding box follows
+| | | |4 = Freeze bounding box
+| | | |5 = Default parent
+| | | |*6 = Backward animation*
+| | | |7-31 = Spare
+|==============================================
+
+
+For a complete description of the group record, see <<AnnexB_GroupRecord>>.
+
+[[AnnexD_LevelofDetailRecord]]
+==== Level of Detail Record
+
+The level of detail record has been modified to include an additional attribute, Significant size. This new value helps an application to calculate switch ranges for the geometry more effective­ly for different display settings (field of view, screen size and resolution).
+
+The following field was added to the end (at the specified offset) of the level of detail record.
+
+.LOD Record changes for OpenFlight15.8 - New Field
+[cols=",,,",]
+|==============================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Double |72 |8 |Significant size
+|==============================================
+
+
+For a complete description of the level of detail record, see <<AnnexB_LevelofDetailRecord>>.
+
+[[AnnexD_ExternalReferenceRecord]]
+==== External Reference Record
+
+The Flags field of the external reference record has been modified to include a new bit, Light point palette override, which is used to specify that the light point appearance and animation palettes override those contained in the master file. The new bit is shown in *bold font*.
+
+.External Reference Record changes for OpenFlight15.8 - Flags field
+[cols=",,,",]
+|========================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |208 |4 |Flags (bits, from left to right)
+| | | |0 = Color palette override
+| | | |1 = Material palette override
+| | | |2 = Texture and texture mapping palette override
+| | | |3 = Line style palette override
+| | | |4 = Sound palette override
+| | | |5 = Light source palette override
+| | | |*6 = Light point palette override*
+| | | |7-31 = Spare
+|========================================================
+
+For a complete description of the external reference record, see <<AnnexB_ExternalReferenceRecord>>.
+
+[[AnnexD_IndexedStringRecord]]
+==== Indexed String Record
+
+Switch nodes now allow individual masks to be named. These names are stored in a new ancil­lary record called the Indexed String record. While these new ancillary records are currently only applicable to Switch records, they are not limited to Switch records and may be useful in future versions of OpenFlight in other contexts.
+
+The new Indexed String Record is an ancillary record that contains an integer index followed by a variable length character string. In this way, arbitrary strings can be associated to indices in a general way.
+
+With respect to Switch mask names, the index specifies the mask number for which the string specifies a name. Mask numbers start at 0. Not all masks are required to have names.
+
+.Indexed String Record - New record for OpenFlight 15.8
+[cols=",,,",]
+|=================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |0 |2 |Indexed string Opcode 132
+|Unsigned Int |2 |2 |Length - length of the record
+|Unsigned Int |4 |2 |Index
+|Char |8 |Length - 8 |ASCII string; 0 terminates
+|=================================================
+
+
+For a completed description of the indexed string record, see “Indexed String Record” on page 53.
+
+[[AnnexD_FaceRecord]]
+==== Face Record
+
+The Flags field of the face record has been modified to include a new bit, Roofline, which is used to specify that a face is part of a building’s roof as viewed from above. The new specifi­cation of the Flags field is shown here. The new bit is shown in *bold font*.
+
+.Face Record changes for OpenFlight15.8 - Flags field
+[cols=",,,",]
+|==============================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |44 |4 |Flags (bits from left to right)
+| | | |0 = Terrain
+| | | |1 = No color
+| | | |2 = No alternate color
+| | | |3 = Packed color
+| | | |4 = Terrain culture cutout (footprint)
+| | | |5 = Hidden, not drawn
+| | | |*6 = Roofline*
+| | | |7-31 = Spare
+|==============================================
+
+[[AnnexD_MeshRecord]]
+==== Mesh Record
+
+Similar to the Face record described above, the Flags field of the mesh record has been modified to include a new bit, Roofline, which is used to specify that a mesh is part of a building’s roof as viewed from above. The new specification of the Flags field is shown here. The new bit is shown in *bold font*.
+
+.Mesh Record changes for OpenFlight15.8 - Flags field
+[cols=",,,",]
+|==============================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |44 |4 |Flags (bits from left to right)
+| | | |0 = Terrain
+| | | |1 = No color
+| | | |2 = No alternate color
+| | | |3 = Packed color
+| | | |4 = Terrain culture cutout (footprint)
+| | | |5 = Hidden, not drawn
+| | | |*6 = Roofline*
+| | | |7-31 = Spare
+|==============================================
+
+[[AnnexD_LocalVertexPoolRecord]]
+==== Local Vertex Pool Record
+
+The Local Vertex Pool record has been modified to include an alpha color component for those vertices in the pool that have color. The alpha color component is represented as a 1 byte integer value whose range is 0 (fully transparent) to 255 (fully opaque).
+
+The definition of the Attribute mask field has been changed as shown here.
+
+NOTE: The physical layout of this field has not changed, only its definition. The bits for which new defi­nitions apply are shown in *bold font*:
+
+.Local Vertex Pool Record changes for OpenFlight15.8 - Attribute mask field
+[cols=",,,,",]
+|=================================================================================================================================================================================================
+|*Data Type* |*Offset* |*Length* 2+|*Description*
+|Unsigned Int |8 |4 2+|Attribute mask - Bit mask indicating what kind of vertex informa­tion is specified for each vertex in the local vertex pool. Bits are or­dered from left to right as follows:
+| | | |Bit # |Description
+| | | |0 |Has Position - if set, data for each vertex in will include x, y, and z coordinates (3 doubles)
+| | | |*1* |*Has Color Index - if set, data for each vertex will in­clude a color value that specifies a color table index as well as an alpha value *
+| | | |*2* |*Has RGBA Color - if set, data for each vertex will in­clude a color value that is a packed RGBA color value*
+| | | 2+|Note: Bits 1and 2 are mutually exclusive - a vertex can have either color index or RGB color value or neither, but not both.
+| | | |3 |Has Normal - if set, data for each vertex will include a normal (3 floats)
+| | | |4 |Has Base UV - if set, data for each vertex will include uv texture coordinates for the base texture (2 floats)
+| | | |5 |Has UV Layer 1 - if set, data for each vertex will include uv texture coordinates for layer 1 (2 floats)
+| | | |6 |Has UV Layer 2 - if set, data for each vertex will include uv texture coordinates for layer 2 (2 floats)
+| | | |7 |Has UV Layer 3 - if set, data for each vertex will include uv texture coordinates for layer 3 (2 floats)
+| | | |8 |Has UV Layer 4 - if set, data for each vertex will include uv texture coordinates for layer 4 (2 floats)
+| | | |9 |Has UV Layer 5 - if set, data for each vertex will include uv texture coordinates for layer 5 (2 floats)
+| | | |10 |Has UV Layer 6 - if set, data for each vertex will include uv texture coordinates for layer 6 (2 floats)
+| | | |11 |Has UV Layer 7 - if set, data for each vertex will include uv texture coordinates for layer 7 (2 floats)
+| | | |12-31 |Spare
+|=================================================================================================================================================================================================
+
+
+The color field of the vertex pool data (data for each vertex) has been modified to include an alpha color component as shown here. The affected field is shown in *bold font*.
+
+.Local Vertex Pool Record changes for OpenFlight15.8 - Color field
+[cols=",,",]
+|====================================================================================================
+|*Data Type* |*Offset* |*Description*
+|Unsigned Int |4 a|
+*colorN - Color for vertex N - present if Attribute mask includes Has Color Index or Has RGBA Color.*
+
+*If Has Color Index, lower 3 bytes specify color table index, upper 1 byte is Alpha.*
+
+*If Has RGBA Color, 4 bytes specify (a, b, g, r) values.*
+
+|====================================================================================================
+
+
+For a complete description of the local vertex pool record, see <<AnnexB_LocalVertexPoolRecord>>.
+
+[[AnnexD_VertexPaletteRecords]]
+==== Vertex Palette Records
+
+Vertex Palette Records have been modified to include an alpha color component. The alpha col­or component is represented as a 1 byte integer value whose range is 0 (fully transparent) to 255 (opaque).
+
+Prior to OpenFlight version 15.8, vertex colors were represented in vertex palette records in one of two ways: Packed Color or Color Index. Depending on the value of the Packed color flag, either the Packed color (a, b, g, r) attribute or the Vertex color index attribute was valid, but not both. For example, if the Packed color flag was TRUE, then the Packed color attribute contained the RGB components of the vertex color and the Vertex color index attribute was not specified. Conversely, if the Packed color flag was FALSE, then the Vertex color index attribute contained the index (in the Color Palette) of the vertex color and the Packed color attribute was not spec­ified. Furthermore, the A (alpha) component of the Packed color attribute was not valid and was ignored.
+
+In OpenFlight version 15.8, the A (alpha) component of the Packed color attribute is valid and all vertex records include the Packed color (a, b, g, r) attribute, even those that also include the Vertex color index attribute. For those vertices that include the Vertex color index attribute, the RGB components of the Packed color attribute will match those of the color specified by the Vertex color index attribute if it was looked up in the color palette. This implies that an appli­cation concerned only with the RGB components of a vertex color can simply reference the Packed color attribute and ignore the Vertex color index attribute in all cases.
+
+All the updated vertex palette records are shown here. The Packed color is shown in *bold font* to emphasize that it is always specified (for both color index and packed color specifications).
+
+.Vertex with Color Record changes for OpenFlight 15.8 - Packed color field
+[cols=",,,",]
+|=========================================================================================================
+|*Data type* |*Offset* |*Length* |*Description*
+|Int |0 |2 |Vertex with Color Opcode 68
+|Unsigned Int |2 |2 |Length - length of the record
+|Unsigned Int |4 |2 |Color name index
+|Int |6 |2 |Flags (bits, from left to right)
+| | | |0 = Start hard edge
+| | | |1 = Normal frozen
+| | | |2 = No color
+| | | |3 = Packed color
+| | | |4-15 = Spare
+|Double |8 |8*3 |Vertex coordinate (x, y, z)
+|Int |32 |4 |*Packed color (a, b, g, r) - always specified when the vertex has color*
+|Unsigned Int |36 |4 |Vertex color index - valid only if vertex has color and Packed color flag is not set
+|=========================================================================================================
+
+.Vertex with Color and Normal Record changes for OpenFlight 15.8* - Packed color field
+[cols=",,,",]
+|=========================================================================================================
+|*Data type* |*Offset* |*Length* |*Description*
+|Int |0 |2 |Vertex with Color and Normal Opcode 69
+|Unsigned Int |2 |2 |Length - length of the record
+|Unsigned Int |4 |2 |Color name index
+|Int |6 |2 |Flags (bits, from left to right)
+| | | |0 = Start hard edge
+| | | |1 = Normal frozen
+| | | |2 = No color
+| | | |3 = Packed color
+| | | |4-15 = Spare
+|Double |8 |8*3 |Vertex coordinate (x, y, z)
+|Float |32 |4*3 |Vertex normal (i, j, k)
+|Int |44 |4 |*Packed color (a, b, g, r) - always specified when the vertex has color*
+|Unsigned Int |48 |4 |Vertex color index - valid only if vertex has color and Packed color flag is not set
+|Int |52 |4 |Reserved
+|=========================================================================================================
+
+.Vertex with Color and UV Record changes for OpenFlight 15.8 - Packed color field
+[cols=",,,",]
+|=========================================================================================================
+|*Data type* |*Offset* |*Length* |*Description*
+|Int |0 |2 |Vertex with Color and UV Opcode 71
+|Unsigned Int |2 |2 |Length - length of the record
+|Unsigned Int |4 |2 |Color name index
+|Int |6 |2 |Flags (bits, from left to right)
+| | | |0 = Start hard edge
+| | | |1 = Normal frozen
+| | | |2 = No color
+| | | |3 = Packed color
+| | | |4-15 = Spare
+|Double |8 |8*3 |Vertex coordinate (x, y, z)
+|Float |32 |4*2 |Texture coordinate (u, v)
+|Int |40 |4 |*Packed color (a, b, g, r) - always specified when the vertex has color*
+|Unsigned Int |44 |4 |Vertex color index - valid only if vertex has color and Packed color flag is not set
+|=========================================================================================================
+
+.Vertex with Color, Normal and UV Record changes for OpenFlight 15.8 - Packed color field
+[cols=",,,",]
+|=========================================================================================================
+|*Data type* |*Offset* |*Length* |*Description*
+|Int |0 |2 |Vertex with Color, Normal and UV Opcode 70
+|Unsigned Int |2 |2 |Length - length of the record
+|Unsigned Int |4 |2 |Color name index
+|Int |6 |2 |Flags (bits, from left to right)
+| | | |0 = Start hard edge
+| | | |1 = Normal frozen
+| | | |2 = No color
+| | | |3 = Packed color
+| | | |4-15 = Spare
+|Double |8 |8*3 |Vertex coordinate (x, y, z)
+|Float |36 |4*3 |Vertex normal (i, j, k)
+|Float |44 |4*2 |Texture coordinate (u, v)
+|Int |52 |4 |*Packed color (a, b, g, r) - always specified when the vertex has color*
+|Unsigned Int |56 |4 |Vertex color index - valid only if vertex has color and Packed color flag is not set
+|Int |60 |4 |Reserved
+|=========================================================================================================
+
+
+For a complete description of the vertex palette records, see <<AnnexB_VertexPaletteRecords>>.
+
+[[AnnexD_LightPoints]]
+=== Light Points
+
+The representation of Light Points in OpenFlight version 15.8 is significantly different from pri­or versions. Previously, all light point attributes were described completely within the primary record of the light point node.
+
+In OpenFlight version 15.8, light point attributes have been divided into two categories, appear­ance and behavioral. To accommodate this, two new palettes have been created, the Light Point Appearance Palette and the Light Point Animation palette. A new Indexed Light Point node record has been added that references entries from the Light Point Appearance and Animation palettes. In effect, this moves the light point attributes out of the node record itself into entries of the two palettes and makes it much easier to share common attributes between multiple light points.
+
+Note that the Light Point Record (Opcode 111) used in previous versions of OpenFlight remains valid for applications that require the data in this other format. Creator and the OpenFlight API versions 2.6 support both light point formats.
+
+Following is a description of the new records in OpenFlight version 15.8 used to describe Light Point Palettes and Indexed Light Points.
+
+[[AnnexD_LightPointAppearancePaletteRecord]]
+==== Light Point Appearance Palette Record
+
+The light point appearance palette record defines the visual attributes of light points.
+
+.Light Point Appearance Palette Record - New record for OpenFlight 15.8
+[cols=",,,",]
+|====================================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |0 |2 |Light Point Appearance Palette Opcode 128
+|Unsigned Int |2 |2 |Length - length of the record
+|Int |4 |4 |Reserved
+|Char |8 |256 |Appearance name; 0 terminates
+|Int |264 |4 |Appearance index
+|Int |268 |2 |Surface material code
+|Int |270 |2 |Feature ID
+|Unsigned Int |272 |4 |Back color for bidirectional points
+|Int |276 |4 |Display mode
+| | | |0 = RASTER
+| | | |1 = CALLIGRAPHIC
+| | | |2 = EITHER
+|Float |280 |4 |Intensity - scalar for front colors
+|Float |284 |4 |Back intensity - scalar for back color
+|Float |288 |4 |Minimum defocus - (0.0 - 1.0) for calligraphic points
+|Float |292 |4 |Maximum defocus - (0.0 - 1.0) for calligraphic points
+|Int |296 |4 |Fading mode
+| | | |0 = Enable perspective fading calculations
+| | | |1 = Disable calculations
+|====================================================================
+
+.Light Point Appearance Palette Record - New record for OpenFlight 15.8  (Continued)
+[cols=",,,",]
+|=================================================================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |300 |4 |Fog Punch mode
+| | | |0 = Enable fog punch through calculations
+| | | |1 = Disable calculations
+|Int |304 |4 |Directional mode
+| | | |0 = Enable directional calculations
+| | | |1 = Disable calculations
+|Int |308 |4 |Range mode
+| | | |0 = Use depth (Z) buffer calculation
+| | | |1 = Use slant range calculation
+|Float |312 |4 |Min pixel size - minimum diameter of points in pixels
+|Float |316 |4 |Max pixel size - maximum diameter of points in pixels
+|Float |320 |4 |Actual size - actual diameter of points in database units
+|Float |324 |4 |Transparent falloff pixel size - diameter in pixels when points become transparent
+|Float |328 |4 |Transparent falloff exponent
+| | | |>= 0 - falloff multiplier exponent
+| | | |1.0 - linear falloff
+|Float |332 |4 |Transparent falloff scalar
+| | | |> 0 - falloff multiplier scale factor
+|Float |336 |4 |Transparent falloff clamp - minimum permissible falloff multiplier result
+|Float |340 |4 |Fog scalar
+| | | |>= 0 - adjusts range of points for punch threw effect.
+|Float |344 |4 |Fog intensity
+|Float |348 |4 |Size difference threshold - point size transition hint to renderer
+|Int |352 |4 |Directionality
+| | | |0 = OMNIDIRECTIONAL
+| | | |1 = UNIDIRECTIONAL
+| | | |2 = BIDIRECTIONAL
+|Float |356 |4 |Horizontal lobe angle - total angle in degrees
+|Float |360 |4 |Vertical lobe angle - total angle in degrees
+|Float |364 |4 |Lobe roll angle - rotation of lobe about local Y axis in de­grees
+|Float |368 |4 |Directional falloff exponent
+| | | |>= 0 - falloff multiplier exponent
+| | | |1.0 - linear falloff
+|Float |372 |4 |Directional ambient intensity - of points viewed off axis
+|Float |376 |4 |Significance - drop out priority for RASCAL lights (0.0 - 1.0)
+|=================================================================================================
+
+.Light Point Appearance Palette Record - New record for OpenFlight 15.8 (Continued)
+[cols=",,,",]
+|============================================================================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |380 |4 |Flags (bits, from left to right)
+| | | |0 = reserved
+| | | |1 = No back color
+| | | |TRUE = don’t use back color for bidirectional points
+| | | |FALSE = use back color for bidirectional points
+| | | |2 = reserved
+| | | |3 = Calligraphic proximity occulting (Debunching)
+| | | |4 = Reflective, non-emissive point
+| | | |5-7 = Randomize intensity
+| | | |0 = never
+| | | |1 = low
+| | | |2 = medium
+| | | |3 = high
+| | | |8 = Perspective mode
+| | | |9 = Flashing
+| | | |10 = Rotating
+| | | |11 = Rotate Counter Clockwise
+| | | |Direction of rotation about local Z axis
+| | | |12 = reserved
+| | | |13-14 = Quality
+| | | |0 = Low
+| | | |1 = Medium
+| | | |2 = High
+| | | |3 = Undefined
+| | | |15 = Visible during day
+| | | |16 = Visible during dusk
+| | | |17 = Visible during night
+| | | |18-31 = Spare
+|Float |384 |4 |Visibility range (> 0.0)
+|Float |388 |4 |Fade range ratio - percentage of total range at which light points start to fade (0.0 - 1.0)
+|Float |392 |4 |Fade in duration - time it takes (seconds) light point to fade in when turned on
+|Float |396 |4 |Fade out duration - time it takes (seconds) light point to fade out when turned off
+|Float |400 |4 |LOD range ratio - percentage of total range at which light points LODs are active (0.0 - 1.0)
+|Float |404 |4 |LOD scale - size of light point LOD polygon rel­ative to light point diameter
+|============================================================================================================
+
+[[AnnexD_LightPointAnimationRecord]]
+==== Light Point Animation Record
+
+The light point animation palette record defines the behavioral attributes of light points
+
+.Light Point Animation Palette Record - New record for OpenFlight 15.8
+[cols=",,,",]
+|==========================================================================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |0 |2 |Light Point Animation Opcode 129
+|Unsigned Int |2 |2 |Length - length of the record
+|Int |4 |4 |Reserved
+|char |8 |256 |Animation name; 0 terminates
+|Int |264 |4 |Animation index
+|Float |268 |4 |Animation period in seconds. Note: Rate = 1/Period
+|Float |272 |4 |Animation phase delay in seconds - from start of period
+|Float |276 |4 |Animation enabled period (time on) in seconds
+|Float |280 |4 |Axis of rotation for rotating animation, I
+|Float |284 |4 |Axis of rotation for rotating animation, J
+|Float |288 |4 |Axis of rotation for rotating animation, K
+|Int |292 |4 |Flags (bits, from left to right)
+| | | |0 = Flashing
+| | | |1 = Rotating
+| | | |2 = Rotate counter clockwise
+| | | |3-31 = Spare
+|Int |296 |4 |Animation type
+| | | |0 = Flashing sequence
+| | | |1 = Rotating
+| | | |2 = Strobe
+| | | |3 = Morse code
+|Int |300 |4 |Morse code timing
+| | | |0 = Standard timing
+| | | |1 = Farnsworth timing
+|Int |304 |4 |Word rate (for Farnsworth timing)
+|Int |308 |4 |Character rate (for Farnsworth timing)
+|char |312 |1024 |Morse code string
+|Int |1336 |4 |Number of sequences (for Flashing sequence)
+4+|
+The following fields are repeated for each sequence represented in the light point animation palette entry.
+
+In the fields listed below, N ranges from 0 to Number of sequences - 1.
+
+|Unsigned Int |1340+(N*12) |4 |Sequence StateN - state of sequence N
+| | | |0 = On
+| | | |1 = Off
+| | | |2 = Color change
+|Float |1344+(N*12) |4 |Sequence DurationN - duration of sequence N in seconds
+|Unsigned Int |1348+(N*12) |4 |Sequence ColorN - color for sequence N. +
+Defined if Sequence state is On or Color change
+|==========================================================================================================
+
+For a complete description of the light point animation palette record, see “Light Point Animation Palette Record” on page 85.
+
+[[AnnexD_IndexedLightPointRecord]]
+==== Indexed Light Point Record
+
+The indexed light point record is one of the records that can represent a light point node.
+
+The appearance index specifies an entry in the light point appearance palette that contains the visual attributes of the light point.
+
+The animation index specifies an entry in the light point animation palette that contains the be­havioral attributes of the light point.
+
+The palette entries referenced by the indexed light point record describe the visual state of the light point’s child vertices. Only vertex nodes may be children of light point nodes.
+
+.Indexed Light Point Record - New record for OpenFlight 15.8
+[cols=",,,",]
+|=================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |0 |2 |Indexed Light Point Record Opcode 130
+|Unsigned Int |2 |2 |Length - length of the record
+|Char |4 |8 |7 char ASCII ID; 0 terminates
+|Int |12 |4 |Appearance index
+|Int |16 |4 |Animation index
+|Int |20 |4 |Draw order (for calligraphic lights)
+|Int |24 |4 |Reserved
+|=================================================
+
+For a complete description of the light point records, see “Indexed Light Point Record” on page 34.
+
+[[AnnexD_LightPointSystemRecord]]
+==== Light Point System Record
+
+The light point system record enables you to collect a set of light points and enable/disable or brighten/dim them as a group.
+
+.Light Point System Record - New record for OpenFlight 15.8
+[cols=",,,",]
+|=================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |0 |2 |Light Point System Record Opcode 130
+|Unsigned Int |2 |2 |Length - length of the record
+|Char |4 |8 |7 char ASCII ID; 0 terminates
+|Float |12 |4 |Intensity
+|Int |16 |4 |Animation state
+| | | |0 = On
+| | | |1 = Off
+| | | |2 = Random
+|Int |20 |4 |Flags (bits, from left to right)
+| | | |0 = Enabled
+| | | |1-31 = Spare
+|=================================================
+
+For a complete description of the light point system record, see <<AnnexB_LightPointSystemRecord>>.
+
+[[AnnexD_TextureMappingPaletteRecord]]
+==== Texture Mapping Palette Record
+
+[[AnnexD_Parametersfor3PointPutTextureMappingType1]]
+===== Parameters for 3 Point Put Texture Mapping (Type 1)
+
+The UV display type field, previously labeled Reserved in prior versions of this document, has been re-labeled in the specification for OpenFlight 15.8. The physical layout of the record was not changed.
+
+.Parameters for 3 Point Put Texture Mapping (Type 2) - changes for OpenFlight15.8- UV display type field (re-labeled)
+[cols=",,,",]
+|=====================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |388 |4 |UV display type
+| | | |1 = XY
+| | | |2 = UV
+|=====================================================
+
+[[AnnexD_Parametersfor4PointPutTextureMappingType2]]
+===== Parameters for 4 Point Put Texture Mapping (Type 2)
+
+The following fields were added to the end (at the specified offsets) of the parameter subrecord.
+
+.Parameters for 4 Point Put Texture Mapping (Type 2) - changes for OpenFlight15.8 - New Fields
+[cols=",,,",]
+|=====================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Float |576 |4 |U Repetition
+|Float |580 |4 |V Repetition
+|=====================================================
+
+The UV display type field, previously labeled Reserved in prior versions of the document, has been re-labeled in the specification for Open Flight 15.8. The physical layout of the record was not changed.
+
+.Parameters for 4 Point Put Texture Mapping (Type 2) - changes for OpenFlight15.8 - UV display type field (re-labeled)
+[cols=",,,",]
+|=====================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |436 |4 |UV display type
+| | | |1 = XY
+| | | |2 = UV
+|=====================================================

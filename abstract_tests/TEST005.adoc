@@ -1,0 +1,21 @@
+[cols=",,",width="100%"]
+|=====================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
+|*Conformance Class* 2+|*/conf/openflight/model-points*
+|*Requirements Class* 2+|/req/openflight/model-points
+|*Dependency* 2+|Openflight Specification
+|*Test 23* 2+|/conf/model-points/model-point-damage-states
+| |*Requirement* |/req/core/openflight/model-point-damage-states
+| |*Test purpose* |Verify that there is a single definition of this point for all damage states and all levels of details for a given model.
+| |*Test method* |Visual. Pass if there is a single definition.
+| |*Test type* |Conformance
+|*Test 24* 2+|/conf/ model-points/model-dis-origin
+| |*Requirement* |/req/openflight/model-dis-origin
+| |*Test purpose* |Verify that the CDB Point representing the DIS Origin is positioned and oriented according the definition provided by the DIS Standard. This definition says that the DIS Origin is at the center of the bounding box of the entity, without articulated and attached parts. The standard also says what the orientation SHALL be. The X-axis points forward, the Y-axis points to the right, and the Z-axis points down. All axes are aligned with the bounding box defined above.
+| |*Test method* |Visual. Pass if the dis origin is correctly encoded.
+| |*Test type* |Conformance
+|*Test 25* 2+|/conf/ model-points /model-viewpoint
+| |*Requirement* |/req/openflight/model-viewpoint
+| |*Test purpose* |Verify the viewpoint’s local coordinate system is oriented such that the Y-axis indicates the viewing direction and the Z-axis points up.
+| |*Test method* |Visual inspection. Pass if orientation is correct.
+| |*Test type* |Conformance
+|=====================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================

@@ -1,0 +1,10 @@
+[cols="1,4",width="90%"]
+|===
+2+|*Requirements Class* – Model Articulations{set:cellbgcolor:#CACCCE}
+2+|/req/openflight/model-articulations {set:cellbgcolor:#FFFFFF}
+|Target type |Operations
+|Dependency |Openflight Specification
+|*Requirement 32* {set:cellbgcolor:#CACCCE} |req/openflight/articulation-node-rotation {set:cellbgcolor:#FFFFFF}
+|*Requirement 33* {set:cellbgcolor:#CACCCE} |/req/openflight/gimbal-limits {set:cellbgcolor:#FFFFFF}
+|*Requirement 34* {set:cellbgcolor:#CACCCE} |req/openflight/articulation-flags {set:cellbgcolor:#FFFFFF}
+|===

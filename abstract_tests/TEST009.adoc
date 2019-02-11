@@ -1,0 +1,21 @@
+[cols=",,",width="100%"]
+|================================================================================================================================================================================================================================================================================================
+|*Conformance Class* 2+|*/conf/openflight/model-points*
+|*Requirements Class* 2+|/req/openflight/model-articulations
+|*Dependency* 2+|Openflight Specification
+|*Test 32* 2+|/conf/model-articulations/articulation-node-rotation
+| |*Requirement* |/req/core/openflight/model-point-damage-states
+| |*Test purpose* |Verify that the translation rate is expressed in meters per second. Verify that the rotation rate is expressed in degrees per second. Finally, verify that the scaling rate is expressesd in units per second. When not specified, verify that a default rate of zero is used.
+| |*Test method* |Visual. Pass if units of measure are correct.
+| |*Test type* |Conformance
+|*Test 33* 2+|/conf/model-articulations /gimbal-limits
+| |*Requirement* |/req/openflight/global-limits
+| |*Test purpose* |Verify that the appropriate flags _are_ set to specify which degrees of freedom are controlled by a particular articulation.
+| |*Test method* |Visual. Pass if flags are correctly set.
+| |*Test type* |Conformance
+|*Test 34* 2+|/conf/ model-articulations /articulation-flags
+| |*Requirement* |/req/openflight/articulation-flags
+| |*Test purpose* |Verify the Flags field, located at offset 376 in the OpenFlight DOF record, has a non-zero value because the articulation control has at least one degree of freedom.
+| |*Test method* |Visual inspection. Pass if orientation is correct.
+| |*Test type* |Conformance
+|================================================================================================================================================================================================================================================================================================

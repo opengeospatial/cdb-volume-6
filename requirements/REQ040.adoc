@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 40* {set:cellbgcolor:#CACCCE}|req/openflight/texture-mipmap +
+ +
+
+mipmaps associated with a given texture _SHALL_ be present in the texture directory. Furthermore, the standard requires that mipmaps _SHALL_ be stored in individual files.{set:cellbgcolor:#FFFFFF}
+|===

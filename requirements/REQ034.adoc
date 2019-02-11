@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 34* {set:cellbgcolor:#CACCCE}|req/openflight/articulation-flags+
+ +
+
+The Flags field is located at offset 376 in the OpenFlight DOF record and its value cannot be zero because the articulation _SHALL_ control at least one degree of freedom.{set:cellbgcolor:#FFFFFF}
+|===

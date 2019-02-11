@@ -1,0 +1,9 @@
+[cols="1,4",width="90%"]
+|===
+2+|*Requirements Class* – Damage Status{set:cellbgcolor:#CACCCE}
+2+|/req/openflight/damage-status {set:cellbgcolor:#FFFFFF}
+|Target type |Operations
+|Dependency |Openflight Specification
+|*Requirement 29* {set:cellbgcolor:#CACCCE} |/req/openflight/damage-transition {set:cellbgcolor:#FFFFFF}
+|*Requirement 30* {set:cellbgcolor:#CACCCE} |req/openflight/damage-order {set:cellbgcolor:#FFFFFF}
+|===

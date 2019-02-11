@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 29* {set:cellbgcolor:#CACCCE}|req/openflight/damage-transition +
+ +
+
+The percentages representing the transitions _SHALL_ be limited to the range [0, 99]. The value 100 is not allowed because the level of damage _SHALL_ exceed the transition value in order to select the correct state.{set:cellbgcolor:#FFFFFF}
+|===

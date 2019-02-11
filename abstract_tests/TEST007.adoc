@@ -1,0 +1,16 @@
+[cols=",,",width="100%"]
+|===================================================================================================================================================================================================================
+|*Conformance Class* 2+|*/conf/openflight/model-switch-nodes*
+|*Requirements Class* 2+|/req/openflight/switch-mask
+|*Dependency* 2+|Openflight Specification
+|*Test 27* 2+|/conf/model-switch-nodes/switch-mask
+| |*Requirement* |/req/core/openflight/switch-mask
+| |*Test purpose* |Verify that the switch contains one mask per state. Note that the first mask, mask index 0, is the default mask. This means that the value of the Current Mask field in the Switch record _is_ 0.
+| |*Test method* |Visual. Pass if values are correct.
+| |*Test type* |Conformance
+|*Test 28* 2+|/conf/ model-switch-nodes/switch-mask-name
+| |*Requirement* |/req/openflight/ switch-mask-name
+| |*Test purpose* |Verify that each mask has a name. The name of the mask _SHALL_ be representative of the state selected by that mask.
+| |*Test method* |Visual. Pass if each mask has a name
+| |*Test type* |Conformance
+|===================================================================================================================================================================================================================

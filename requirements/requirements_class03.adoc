@@ -1,0 +1,17 @@
+[cols="1,4",width="90%"]
+|===
+2+|*Requirements Class*  – Model Zones{set:cellbgcolor:#CACCCE}
+2+|/req/core/model-zones {set:cellbgcolor:#FFFFFF}
+|Target type |Operations
+|Dependency |OpenFlight Specification
+|*Requirement 13* {set:cellbgcolor:#CACCCE} |/req/openflight/model-zone-bounding-box {set:cellbgcolor:#FFFFFF}
+|*Requirement 14* {set:cellbgcolor:#CACCCE} |/req/openflight/zone-name {set:cellbgcolor:#FFFFFF}
+|*Requirement 15* {set:cellbgcolor:#CACCCE} |/req/openflight/global-zone {set:cellbgcolor:#FFFFFF}
+|*Requirement 16* {set:cellbgcolor:#CACCCE} |/req/openflight/hot-spot-temperature {set:cellbgcolor:#FFFFFF}
+|*Requirement 17* {set:cellbgcolor:#CACCCE} |/req/openflight/model-footprint-zones {set:cellbgcolor:#FFFFFF}
+|*Requirement 18* {set:cellbgcolor:#CACCCE} |/req/openflight/model-footprint-hierarchy {set:cellbgcolor:#FFFFFF}
+|*Requirement 19* {set:cellbgcolor:#CACCCE} |/req/openflight/model-cutout-zones {set:cellbgcolor:#FFFFFF}
+|*Requirement 20* {set:cellbgcolor:#CACCCE} |/req/openflight/model-cutout-geometry {set:cellbgcolor:#FFFFFF}
+|*Requirement 21* {set:cellbgcolor:#CACCCE} |/req/openflight/model-pseudo-interior-zone {set:cellbgcolor:#FFFFFF}
+|*Requirement 22* {set:cellbgcolor:#CACCCE} |/req/openflight/model-interior-zone {set:cellbgcolor:#FFFFFF}
+|===

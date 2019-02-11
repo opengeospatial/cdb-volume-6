@@ -1,0 +1,55 @@
+[cols=",,",width="100%"]
+|=============================================================================================================================================================================================================================================================================================================================
+|*Conformance Class* 2+|*/conf/openflight/model-textures*
+|*Requirements Class* 2+|/req/openflight/model-textures
+|*Dependency* 2+|Openflight Specification
+|*Test 37* 2+|/conf/model-textures/texture-file-loading
+| |*Requirement* |/req/core/openflight/ texture-file-loading
+| |*Test purpose* |Verify thatforn the case of GTModels and MModels, textures are separate files that are loaded after the model geometry files are read and loaded by client devices; in the case of GSModels and T2DModels, the textures can be loaded concurrently with the model geometry files.
+| |*Test method* |Visual. Pass if units of measure are correct.
+| |*Test type* |Conformance
+|*Test 38* 2+|/conf/model- textures/qualterly-textures
+| |*Requirement* |/req/openflight/quarterly-textures
+| |*Test purpose* |Verify that the quarterly textures are provided as a complete set, i.e., it is assumed that all 4 textures of the same kind (i.e., all four textures have their component selector 1 set to 003) and are all present in the model’s texture directory
+| |*Test method* |Visual. Pass if flags are correctly set.
+| |*Test type* |Conformance
+|*Test 39* 2+|/conf/ model- textures/monthly-textures
+| |*Requirement* |/req/openflight/monthly-textures
+| |*Test purpose* |Verify the monthly textures are provided as a complete set, i.e., it is assumed that all the 12 textures are of the same kind (i.e., all twelve textures have their component selector CS1 = 002) and are all present in the model’s texture directory.
+| |*Test method* |Visual inspection. Pass if orientation is correct.
+| |*Test type* |Conformance
+|*Test 40* 2+|/conf/ model- textures/texture-mipmap
+| |*Requirement* |/req/openflight/texture-mipmap
+| |*Test purpose* |Verify that the mipmaps associated with a given texture are present in the texture directory. Furthermore, verify that the mipmaps are stored in individual files..
+| |*Test method* |Visual inspection. Pass if orientation is correct.
+| |*Test type* |Conformance
+|*Test 41* 2+|/conf/ model- textures/texture-palette-path
+| |*Requirement* |/req/openflight/texture-palette-path
+| |*Test purpose* |Verify that the palette path is relative to the OpenFlight file
+| |*Test method* |Visual inspection. Pass if orientation is correct.
+| |*Test type* |Conformance
+|*Test 42* 2+|/conf/ model- textures/texture-shadow-geometry
+| |*Requirement* |/req/openflight/texture-shadow-geometry
+| |*Test purpose* |Verify that when a geometry exists for the purpose of casting shadows that the geometry is located under an OpenFlight object node whose Shadow flag is set
+| |*Test method* |Visual inspection. Pass if orientation is correct.
+| |*Test type* |Conformance
+|*Test 43* 2+|/conf/ model- textures/model-skin-textures
+| |*Requirement* |/req/openflight/model-skin-textures
+| |*Test purpose* |Verify that the mapping of textures for a given model or cultural features is identical since only the texture is changed, not the UV mapping
+| |*Test method* |Visual inspection. Pass if orientation is correct.
+| |*Test type* |Conformance
+|*Test 44* 2+|/conf/ model- textures/model-night-maps
+| |*Requirement* |/req/openflight/model-night-maps
+| |*Test purpose* a|
+Verify that a night map has the same size as its base texture, that
+
+a night map uses the same UV mapping as its base texture and that a night map has a similar format as its base texture (RGB or Intensity) plus an alpha channel
+
+| |*Test method* |Visual inspection. Pass if orientation is correct.
+| |*Test type* |Conformance
+|*Test 45* 2+|/conf/ model- textures/model-night-generation
+| |*Requirement* |/req/openflight/model-night-generation
+| |*Test purpose* |Verify that the Effect field of the multitexture record contains the value 0 indicating using the Texture Environment mapping defined in the Texture Attribute file. Verify that the Environment Type field found in the Texture Attribute file contains the value 2 indicating a Decal environment mapping
+| |*Test method* |Visual inspection. Pass if orientation is correct.
+| |*Test type* |Conformance
+|=============================================================================================================================================================================================================================================================================================================================

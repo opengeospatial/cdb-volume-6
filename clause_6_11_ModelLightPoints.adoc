@@ -1,0 +1,35 @@
+
+=== Model Light Points
+
+The CDB standard does not make a distinction between light points and light sources. Both represent real lights that emit light and that can illuminate neighboring objects. In most current visual systems, a light point is a simple representation of a point source of light when viewed from a distance; it has no observable lighting effect on its immediate surroundings. In real-life however, as an observer moves closer to the light, its lighting or illuminating effect on the surrounding objects becomes increasingly observable; furthermore, the actual shape of the light also becomes more distinct.
+
+In a typical simulator, client-devices may choose to limit the representation of the light to a single point and neglect the illuminating effect of the light on neighboring objects and terrain. For this reason, it is up to the client (and its RTP) to determine whether a light can illuminate its surroundings or not; the decision is based on the type of light and the inherent capabilities/capacity of the client.
+
+Another point to consider is the fact that a light may have a very different representation depending on the client device. For instance, consider the visual representation of a light by an IG compared with the representation required by a radar system, NVG device or a FLIR device.
+
+For all of these considerations, the CDB standard has adopted the following approach in defining lights. The OpenFlight file defines only the position, direction and the name of the light type; no other attributes are specified. The CDB standard provides a very elaborate light type naming convention. This convention permits clients to internally derive all of the properties and parameters needed to render the light. The approach is entirely device-independent. Modelers need not concern themselves with hundreds of parameters, many of which are often specific to underlying algorithms within the client. The naming convention ensures that the client has all of the information needed to capture the modeler’s intent. Because the approach is device-independent, the rendering is limited only by the client’s capabilities, not by the database itself.
+
+As a result, lights in OpenFlight are defined by inserting an Indexed Light Point record into the OpenFlight scene graph. A vertex and a normal are stored in a Vertex List record that defines the position and direction of the light. The name of the light type is stored in the Light Point Appearance Palette record.
+
+The light type’s name fully defines the appearance, animation and other characteristic relevant to the field of simulation. It is the responsibility of the client to supply the internal parameters that correspond to each of the light types supported by the CDB standard.
+
+Light type naming conventions are defined in Section 2.3 of the Volume 1: OGC CDB Core Standard:Model and Physical Database Structure, CDB Core Model, Light Naming, and the list of names is presented in Annex J, Volume 2: OGC CDB Core: Model and Physical Structure: Annexes (formerly CDB Best Practice Volume 2 Appendix E).
+
+include::requirements/REQ035.adoc[]
+
+
+
+The list of vertices contains one vertex if a single light point is defined. The list contains several vertices when multiple independent light points are defined. An optional matrix and replication count permits the definition of a light string.
+
+[#table_OpenFlightRecordsforaLightPoint,reftext='Table 6-32']
+*Table 6-32: OpenFlight Records for a Light Point*
+
+[cols="",align="center"]
+|===
+|INDEXED LIGHT POINT
+| MATRIX (optional)
+| REPLICATE (optional)
+| PUSH LEVEL
+| VERTEX LIST
+| POP LEVEL
+|===

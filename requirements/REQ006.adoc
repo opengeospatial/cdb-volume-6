@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 6* {set:cellbgcolor:#CACCCE}|req/openflight/xref+
+ +
+
+An OpenFlight external reference (XRef) node is used to refer to another OpenFlight file. The reference is made by specifying the filename and its path (absolute or relative). The CDB Standard requires that all references _SHALL_ be made using a relative path. {set:cellbgcolor:#FFFFFF}
+|===

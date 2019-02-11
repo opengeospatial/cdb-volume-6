@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 42* {set:cellbgcolor:#CACCCE}|req/openflight/texture-shadow-geometry +
+ +
+
+When geometry exists for the purpose of casting shadows, it _SHALL_ be located under an object node whose Shadow flag is set.{set:cellbgcolor:#FFFFFF}
+|===

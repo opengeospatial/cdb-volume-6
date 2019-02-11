@@ -1,0 +1,36 @@
+== Conventions
+
+This sections provides details and examples for any conventions used in the document. Examples of conventions are symbols, abbreviations, use of XML schema, or special notes regarding how to read the document.
+
+=== Identifiers
+
+The normative provisions in this standard are denoted by the URI
+
+http://www.opengis.net/spec/CDB/1.1/openflight/\{requirement}
+
+All requirements and conformance tests that appear in this document are denoted by partial URIs that are relative to this base.
+
+For the sake of brevity, the use of “req” in a requirement URI denotes the literal:
+
+http://www.opengis.net/spec/core/cdb/1.1/openflight
+
+An example might be:
+
+req/openflight/crs
+
+=== Schemas
+
+The following XML Schemas can be found in the OGC CDB Standard schema repository:
+
+. Base_Material_Table.xsd
+. Composite_Material_Table.xsd
+. Configuration.xsd
+. Defaults.xsd
+. Feature_Data_Dictionary.xsd
+. Lights.xsd
+. Lights_Tuning.xsd
+. Model_Components.xsd
+. Model_Metadata.xsd
+. OpenFlight_Model_Extensions.xsd
+. Vector_Attributes.xsd
+. Version.xsd

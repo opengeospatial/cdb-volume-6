@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 17* {set:cellbgcolor:#CACCCE}|req/openflight/model-footprint-zones +
+ +
+
+Client-devices _SHALL_ assume that the geometry that is associated with a Model Footprint Zone is hidden, regardless of the value of the OpenFlight _Hidden_ flag of associated geometry. However, CDB content creation tools _SHALL_ set the _Hidden_ flag of the associated geometry footnote:[This increases compatibility with OpenFlight readers that are not CDB-compliant.]. {set:cellbgcolor:#FFFFFF}
+|===

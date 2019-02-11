@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 15* {set:cellbgcolor:#CACCCE}|req/openflight/global-zone +
+ +
+
+A CDB-compliant Model _SHALL_ have at least one zone that encompasses the whole model and that is called the model global zone. The global zone is mandatory. {set:cellbgcolor:#FFFFFF}
+|===

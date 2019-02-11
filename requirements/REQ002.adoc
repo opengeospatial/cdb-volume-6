@@ -1,0 +1,9 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 2* {set:cellbgcolor:#CACCCE}|req/model-global-zone +
+ +
+
+All CDB Models _SHALL_ have a global zone as their root node. This node identifies the model. Global zones are defined in section 6.5.2 below. {set:cellbgcolor:#FFFFFF}
+|===
+
+//CHECK

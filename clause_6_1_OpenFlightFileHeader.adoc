@@ -1,0 +1,16 @@
+:figure-caption: Figure 6-
+:figure-num: 0
+
+
+== CDB OpenFlight Models
+
+This volume of the CDB standard defines a set of conventions for representing 2D and 3D models based on version 16.0 of the OpenFlight Scene Description Database Specification as annotated in Appendix C of this document.
+The conventions presented here address the needs of several types of simulation clients including OTW, FLIR, NVG, CGF, radar, and laser, acoustic, magnetic, visual and thermal sensors.
+
+include::requirements/requirements_class00.adoc[]
+
+=== OpenFlight File Header
+
+The OpenFlight Header Record contains descriptive coordinate reference system (CRS) metadata about the manner vertices are encoded, and how these vertices are applied to an earth model and a projection type. On the other hand, the CDB standard itself mandates a prescribed set of conventions in this regard.
+
+include::requirements/REQ001.adoc[]

@@ -1,0 +1,15 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 44* {set:cellbgcolor:#CACCCE}|req/openflight/model-night-maps +
+ +
+
+ There are constraints imposed on night maps:
+
+ &#8226; A night map _SHALL_ have the same size as its base texture.
+
+ &#8226; A night map _SHALL_ use the same UV mapping as its base texture.
+
+ &#8226; A night map has a similar format as its base texture (RGB or Intensity) plus an alpha channel.
+
+{set:cellbgcolor:#FFFFFF}
+|===

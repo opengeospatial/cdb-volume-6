@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 10* {set:cellbgcolor:#CACCCE}|req/openflight/roll-pitch-yaw+
+ +
+
+Pitch, Roll and Yaw angles refer to rotations around the X, Y, and Z axes, respectively. Angles _SHALL_ be measured in degrees. The Roll and Yaw angles vary from ±180 degrees while the Pitch angle is limited to the range ±90 degrees. {set:cellbgcolor:#FFFFFF}
+|===

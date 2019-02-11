@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 13* {set:cellbgcolor:#CACCCE}|req/openflight/model-zone-bounding-box+
+ +
+
+To be a OpenFlight Group Node a Model Zone _SHALL_ have mandatory Bounding Box.{set:cellbgcolor:#FFFFFF}
+|===

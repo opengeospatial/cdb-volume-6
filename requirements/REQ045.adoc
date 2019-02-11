@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 45* {set:cellbgcolor:#CACCCE}|req/openflight/night-map-generation +
+ +
+
+The Effect field of this multitexture record _SHALL_ contain the value 0 indicating to use the Texture Environment mapping defined in the Texture Attribute file. The Environment Type field found in the Texture Attribute file _SHALL_ contain the value 2 indicating a Decal environment mapping. {set:cellbgcolor:#FFFFFF}
+|===

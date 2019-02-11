@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 22* {set:cellbgcolor:#CACCCE}|req/openflight/model-interior-zone+
+ +
+
+The Model interior itself _SHALL_ have a global zone whose name is “Interior”. {set:cellbgcolor:#FFFFFF}
+|===

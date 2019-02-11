@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 43* {set:cellbgcolor:#CACCCE}|req/openflight/model-skin-textures +
+ +
+
+The mapping of textures for a given model or cultural features _SHALL_ be identical since only the texture is changed, not the UV mapping. {set:cellbgcolor:#FFFFFF}
+|===

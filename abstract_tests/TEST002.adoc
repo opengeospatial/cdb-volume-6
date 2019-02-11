@@ -1,0 +1,31 @@
+[cols=",,",width="100%"]
+|============================================================================================================================================================================================================================================================================
+|*Conformance Class* 2+|*/conf/openflight/tree-structure*
+|*Requirements Class* 2+|/req/openflight/tree-structure
+|*Dependency* 2+|Openflight Specification
+|*Test 2* 2+|/conf/tree-structure/model-global-zone
+| |*Requirement* |/req/core/openflight/model-global-zone
+| |*Test purpose* |Verify that a CDB OpenFlight Model has a global zone as its root node. This node identifies the model.
+| |*Test method* |Visual. Pass if the model has a global zone as its root node. Check file system structure.
+| |*Test type* |Conformance
+|*Test 3* 2+|/conf/tree-structure/2dmodel
+| |*Requirement* |/req/openflight/2dmodel
+| |*Test purpose* |Verify that each 2DModel _is_ implemented as a Model Zone with its own subgraph.
+| |*Test method* |Visual. Pass if the a model zone has its own sub-graph
+| |*Test type* |Conformance
+|*Test 4* 2+|/conf/tree-structure/2dmodel-rules
+| |*Requirement* |/req/openflight/2dmodel-rules
+| |*Test purpose* |Verify the A 2DModel has at least two layers: layer 0 and layer 1. Verify that Layer 0 is empty because it represents the terrain on top of which subsequent layers are applied. Verify that each layer is composed of exactly one OpenFlight Object node.
+| |*Test method* |Pass if there are at least two layers. Visual inspection
+| |*Test type* |Conformance
+|*Test 5* 2+|/conf/tree-structure/2dmodels
+| |Requirement |req/openflight/2dmodels
+| |Test purpose |Verify that for T2DModels, node attributes are defined only at the zone level; that is, at the global zone or at the individual 2DModel zones. Node attributes are not permitted at the Group, LOD, Object, Face, and Mesh node levels.
+| |Test method |Visual, Pass if node attributes are defined only at the zone level
+| |Test type |Conformance
+|*Test 6* 2+|/conf/tree-structure/xref
+| |Requirement |req/openflight/xref
+| |Test purpose |Verify that all external OpenFlight references are made using a relative path.
+| |Test method |Visual. Pass if external references use relative paths.
+| |Test type |Conformance
+|============================================================================================================================================================================================================================================================================

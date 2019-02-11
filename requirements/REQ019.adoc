@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 19* {set:cellbgcolor:#CACCCE}|req/openflight/model-cutout-zones+
+ +
+
+The Model Cutout is modeled as a set of OpenFlight Face or Mesh records. Client-devices _SHALL_ assume that the geometry that is associated with a Model Cut-Out Zone is hidden and cut-out. {set:cellbgcolor:#FFFFFF}
+|===

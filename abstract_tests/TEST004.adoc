@@ -1,0 +1,56 @@
+[cols=",,",width="100%"]
+|==============================================================================================================================================================================================================================
+|*Conformance Class* 2+|*/conf/openflight/model-zones*
+|*Requirements Class* 2+|/req/openflight/model-zones
+|*Dependency* 2+|Openflight Specification
+|*Test 13* 2+|/conf/model-zones/model-zone-bounding-box
+| |*Requirement* |/req/openflight/model-zone-bounding-box
+| |*Test purpose* |Verify that a model zone has a Bounding Box.
+| |*Test method* |Visual. Pass if there is a bounding box.
+| |*Test type* |Conformance
+|*Test 14* 2+|/conf/model-zones/zone-name
+| |*Requirement* |/req/openflight/zone-name
+| |*Test purpose* |Verify that there is a zone name.
+| |*Test method* |Visual. Pass if there is a zone name.
+| |*Test type* |Conformance
+|*Test 15* 2+|/conf/model-zone/global-zone
+| |*Requirement* |/req/openflight/ global-zone
+| |*Test purpose* |Verify that the model has at least one zone that encompasses the whole model and that is called the model global zone.
+| |*Test method* |Visual. Pass if of there is one zone encompassing the whole model.
+| |*Test type* |Conformance
+|*Test 16* 2+|/conf/ model-zone /hot-spot-temperature
+| |Requirement |req/openflight/hot-spot-temperature
+| |Test purpose |Verify that temperatures are expressed as integer Celsius.
+| |Test method |Visual. Pass if temperatures are integer Censius
+| |Test type |Conformance
+|*Test 17* 2+|/conf/ model-zone /model-footprint-zones
+| |Requirement |req/openflight/ model-footprint-zones
+| |Test purpose |Verify that Client-devices assume that the geometry that is associated with a Model Footprint Zone is hidden.
+| |Test method |Visual. Check Client code.
+| |Test type |Conformance
+|*Test 18* 2+|/conf/ model-zone /model-footprint-hierarchy
+| |Requirement |req/openflight/model-footprint-hierarchy
+| |Test purpose |Verify that the Model Footprint is placed under a CDB Footprint Zone node.
+| |Test method |Visual. Pass if model footprint is correctly placed in hierarchy.
+| |Test type |Conformance
+|*Test 19* 2+|/conf/ model-zone /model-cutout-zones
+| |Requirement |req/openflight/model-cutout-zones
+| |Test purpose |Verify that the Model Cutout is modeled as a set of OpenFlight Face or Mesh records. Verify that client-devices assume that the geometry that is associated with a Model Cut-Out Zone is hidden and cut-out...
+| |Test method |Visual.
+| |Test type |Conformance
+|*Test 20* 2+|/conf/ model-zone /model-cutout-geometry
+| |Requirement |req/openflight/model-cutout-geometry
+| |Test purpose |Verify that the Cutout geometry is placed under a CDB Model Cutout Zone node.
+| |Test method |Visual.
+| |Test type |Conformance
+|*Test 21* 2+|/conf/ model-zone /model-pseudo-interior-zone
+| |Requirement |req/openflight/model-pseudo-interior-zone
+| |Test purpose |Verify that since the pseudo-interior is a placeholder for the real interior that it is placed under its own subgraph and identified by a CDB zone whose name is “Interior”.
+| |Test method |Visual.
+| |Test type |Conformance
+|*Test 22* 2+|/conf/ model-zone /model- interior-zone
+| |Requirement |req/openflight/model- interior-zone
+| |Test purpose |Verify that The Model interior itself has a global zone whose name is “Interior”.
+| |Test method |Visual.
+| |Test type |Conformance
+|==============================================================================================================================================================================================================================

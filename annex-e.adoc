@@ -1,0 +1,358 @@
+[appendix]
+:appendix-caption: Annex
+==  Summary of Changes Version 16.0
+
+[[AnnexE_Overview]]
+=== E - Overview
+
+This section describes the changes in the OpenFlight Scene Description between versions 15.8 and 16.0 as well as the errors contained in previous versions of this document that have been corrected in this version.
+
+OpenFlight version 16.0 coincides with MultiGen Creator version 3.0 and the OpenFlight API version 3.0. The changes made for this version are:
+
+<<AnnexE_ExternalReferenceRecord>>
+
+<<AnnexE_FaceRecord>>
+
+<<AnnexE_MeshRecord>>
+
+<<AnnexE_LightPointAppearancePaletteRecord>>
+
+<<AnnexE_ShaderPaletteRecord>>
+
+<<AnnexE_TextureAttributeFile>>
+
+<<AnnexE_TextureMappingPaletteRecord>>
+
+[[AnnexE_DocumentCorrections]]
+=== Document Corrections
+
+The errors corrected in this version of the document are described in the sections that follow.
+
+[[AnnexE_HeaderRecord]]
+==== Header Record
+
+The value corresponding to User defined ellipsoid for the Earth ellipsoid model field has been corrected. It was previously listed as having a value of 5. The correct value is -1. The corrected value is shown in *bold font*.
+
+.Header Record error corrected in OpenFlight 16.0 specification - Earth ellipsoid model field (corrected)
+[cols=",,,",]
+|===============================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |268 |4 |Earth ellipsoid model
+| | | |0 = WGS 1984
+| | | |1 = WGS 1972
+| | | |2 = Bessel
+| | | |3 = Clarke 1866
+| | | |4 = NAD 1927
+| | | |*-1 = User defined ellipsoid*
+|===============================================================
+
+[[AnnexE_FaceRecord]]
+==== Face Record
+
+The possible values listed for the Draw type field have been corrected. The affected values are shown in *bold font*.
+
+.Face Record error corrected in OpenFlight 16.0 specification - Draw type field (corrected)
+[cols=",,,",]
+|=============================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |18 |1 |Draw type
+| | | |0 = Draw solid with backface culling
+| | | |1 = Draw solid, no backface culling
+| | | |*2 = Draw wireframe and close*
+| | | |*3 = Draw wireframe*
+| | | |4 = Surround with wireframe in alternate color
+| | | |8 = Omnidirectional light
+| | | |9 = Unidirectional light
+| | | |10 = Bidirectional light
+|=============================================================
+
+For a complete description of the face record, see “Face Record” on page 26.
+
+[[AnnexE_MeshRecord]]
+==== Mesh Record
+
+The Reserved field at offset 12, previously omitted in prior versions of this document, has been documented in the specification for OpenFlight 16.0. The offsets of fields following this field have been adjusted accordingly.
+
+.Mesh Record error corrected in OpenFlight 16.0 specification - Reserved field (documented)
+[cols=",,,",]
+|=============================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |12 |4 |Reserved
+|=============================================================
+
+The possible values listed for the Draw type field have been corrected. The affected values are shown in *bold font*.
+
+.Mesh Record error corrected in OpenFlight 16.0 specification - Draw type field (corrected)
+[cols=",,,",]
+|=============================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |18 |1 |Draw type
+| | | |0 = Draw solid with backface culling
+| | | |1 = Draw solid, no backface culling
+| | | |*2 = Draw wireframe and close*
+| | | |*3 = Draw wireframe*
+| | | |4 = Surround with wireframe in alternate color
+| | | |8 = Omnidirectional light
+| | | |9 = Unidirectional light
+| | | |10 = Bidirectional light
+|=============================================================
+
+For a complete description of the mesh record, see <<AnnexB_MeshRecord>>.
+
+[[AnnexE_SwitchRecord]]
+==== Switch Record
+
+The order of the fields were corrected. The affected fields are shown here.
+
+.Switch Record error corrected in OpenFlight 16.0 specification - field order (corrected)
+[cols=",,,",]
+|==================================================================================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |20 |4 |Number of masks
+|Int |24 |4 |Number of words per mask - the number of 32 bit words required for each mask, calculated as follows: +
+(number of children / 32) + X +
+where X equals: +
+0 if (number of children modulo 32) is zero +
+1 if (number of children modulo 32) is nonzero
+|==================================================================================================================
+
+
+For a complete description of the switch record, see <<AnnexB_SwitchRecord>>.
+
+[[AnnexE_TextureMappingPaletteRecord]]
+==== Texture Mapping Palette Record
+
+The parameters for warped mapping in the texture mapping palette record were corrected. The 128 byte 4x4 Trackplane to XY plane transformation matrix was erroneously listed where an 8 byte reserved field was located. The entire record is shown here. The corrected field and offsets are shown in *bold font*:
+
+.Parameters for Warped Mapping error corrected in OpenFlight 16.0 specification - Reserved field (corrected)
+[cols=",,,",]
+|===============================================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |X+0 |4 |Active geometry point
+| | | |0 = First warp FROM point
+| | | |1 = Second warp FROM point
+| | | |2 = Third warp FROM point
+| | | |3 = Fourth warp FROM point
+| | | |4 = Fifth warp FROM point
+| | | |5 = Sixth warp FROM point
+| | | |6 = Seventh warp FROM point
+| | | |7 = Eighth warp FROM point
+| | | |8 = First warp TO point
+| | | |9 = Second warp TO point
+| | | |10 = Third warp TO point
+| | | |11 = Fourth warp TO point
+| | | |12 = Fifth warp TO point
+| | | |13 = Sixth warp TO point
+| | | |14 = Seventh warp TO point
+| | | |15 = Eighth warp TO point
+|Int |X+4 |4 |Warp tool state
+| | | |0 = Start state - no points entered
+| | | |1 = One FROM point entered
+| | | |2 = Two FROM point entered
+| | | |3 = Three FROM point entered
+| | | |4 = Four FROM point entered
+| | | |5 = Five FROM point entered
+| | | |6 = Six FROM point entered
+| | | |7 = Seven FROM point entered
+| | | |8 = All FROM point entered
+|Int |X+8 |8 |*Reserved*
+|Double |*X+16* |8*8*2 |FROM points transformed to XY plane by above matrix. +
+8 FROM points are ordered 1, 2, ... 8. Each point is (x, y)
+|Double |*X+144* |8*8*2 |TO points transformed to XY plane by above matrix. +
+8 TO points are ordered 1, 2, ... 8. Each point is (x, y)
+|===============================================================================
+
+
+For a complete description of the texture mapping palette record, see <<AnnexB_TextureMappingPaletteRecord>>.
+
+[[AnnexE_IndexedStringRecord]]
+==== Indexed String Record
+
+The length of the Index field has been corrected. It was previously listed as 2 bytes. The correct length is 4 bytes. The corrected field and length are shown in *bold font*:
+
+.Indexed String Record
+[cols=",,,",]
+|=================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |0 |2 |Indexed string Opcode 132
+|Unsigned Int |2 |2 |Length - length of the record
+|Unsigned Int |4 |*4* |*Index*
+|Char |8 |Length - 8 |ASCII string; 0 terminates
+|=================================================
+
+
+[[AnnexE_BoundingConvexHullRecord]]
+==== Bounding Convex Hull Record
+
+The description of this previously undocumented record has been added to the specification. For a complete description of this record, see <<AnnexB_BoundingConvexHullRecord>>.
+
+[[AnnexE_BoundingHistogramRecord]]
+==== Bounding Histogram Record
+
+The description of this previously undocumented record has been added to the specification. For a complete description of this record, see <<AnnexB_BoundingHistogramRecord>>.
+
+
+[[AnnexE_FormatChanges]]
+=== Format Changes
+
+[[AnnexE_ExternalReferenceRecord]]
+==== External Reference Record
+
+The Flags field of the external reference record has been modified to include a new bit, Shader palette override, which is used to specify that the shader palette override those contained in the master file. The new bit is shown in *bold font*.
+
+.External Reference Record changes for OpenFlight 15.8 - Flags field
+[cols=",,,",]
+|========================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |208 |4 |Flags (bits, from left to right)
+| | | |0 = Color palette override
+| | | |1 = Material palette override
+| | | |2 = Texture and texture mapping palette override
+| | | |3 = Line style palette override
+| | | |4 = Sound palette override
+| | | |5 = Light source palette override
+| | | |6 = Light point palette override
+| | | |*7 = Shader palette override*
+| | | |8-31 = Spare
+|========================================================
+
+For a complete description of the external reference record, see <<AnnexB_ExternalReferenceRecord>>.
+
+
+[[AnnexE_FaceRecord2]]
+==== Face Record
+
+The face record has been modified to include a new attribute, Shader index, which is used to specify the shader (if any) that is applied to the face.
+
+.Face Record changes for OpenFlight 16.0 - Flags field
+[cols=",,,",]
+|==============================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |78 |2 |Shader index, -1 if none
+|==============================================
+
+
+For a complete description of the face record, see <<AnnexB_FaceRecord>>.
+
+[[AnnexE_MeshRecord2]]
+==== Mesh Record
+
+Similar to the Face record described above, the mesh record has been modified to include a new attribute, Shader index, which is used to specify the shader (if any) that is applied to the mesh.
+
+.Mesh Record changes for OpenFlight 16.0 - Flags field
+[cols=",,,",]
+|==============================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |78 |2 |Shader index, -1 if none
+|==============================================
+
+For a complete description of the mesh record, see <<AnnexB_MeshRecord>>.
+
+[[AnnexE_LightPointAppearancePaletteRecord]]
+==== Light Point Appearance Palette Record
+
+The light point appearance palette record has been modified to include a new attribute, Texture pattern index, which is used to specify the texture (if any) that is applied to the light point ap­pearance.
+
+.Light Point Appearance Record changes for OpenFlight 16.0 - Texture pattern index field
+[cols=",,,",]
+|==========================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |408 |2 |Texture pattern index, -1 if none
+|Int |410 |2 |Reserved
+|==========================================================
+
+For a complete description of the light point appearance palette record, see <<AnnexB_LightPointAppearancePaletteRecord>>.
+
+[[AnnexE_ShaderPaletteRecord]]
+==== Shader Palette Record
+
+The shader palette contains descriptions of shaders used while drawing geometry. It is com­posed of an arbitrary number of shader palette records. The shader palette records must follow the header record and precede the first push.
+
+.Shader Palette Record - New record for OpenFlight 16.0
+[cols=",,,",]
+|=======================================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |0 |2 |Shader Opcode 133
+|Unsigned Int |2 |2 |Length - length of the record
+|Int |4 |4 |Shader index
+|Int |8 |4 |Shader type
+| | | |0 = Cg
+| | | |1 = CgFX
+| | | |2 = OpenGL Shading Language
+|char |12 |1024 |Shader name; 0 terminates
+|char |1036 |1024 |Vertex program file name; 0 terminates +
+(Cg Shader type specific)
+|char |2060 |1024 |Fragment program file name; 0 terminates +
+(Cg Shader type specific)
+|Int |3084 |4 |Vertex program profile (Cg Shader type specific)
+|Int |3088 |4 |Fragment program profile (Cg Shader type specific)
+|char |3092 |256 |Vertex program entry point (Cg Shader type specific)
+|Char |3348 |256 |Fragment program entry point (Cg Shader type specific)
+|=======================================================================
+
+[[AnnexE_TextureAttributeFile]]
+=== Texture Attribute File
+
+The Wrap method fields (Wrap method u,v, Wrap method u and Wrap method v) have been changed to include a new possible value, Mirrored repeat as shown here. This new value is shown in *bold font*:.
+
+.Texture Attribute File Format changes for OpenFlight 16.0 Wrap method fields
+[cols=",,,",]
+|=================================================================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |36 |4 |Wrap method u,v - only used when either Wrap method u or Wrap method v is set to None
+| | | |0 = Repeat
+| | | |1 = Clamp
+| | | |*4 = Mirrored Repeat*
+|Int |40 |4 |Wrap method u
+| | | |0 = Repeat
+| | | |1 = Clamp
+| | | |3 = None - use Wrap method u,v
+| | | |*4 = Mirrored Repeat*
+|=================================================================================================
+
+.Texture Attribute File Format changes for OpenFlight 16.0 Wrap method fields
+[cols=",,,",]
+|==============================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |44 |4 |Wrap method v
+| | | |0 = Repeat
+| | | |1 = Clamp
+| | | |3 = None - use Wrap method u,v
+| | | |*4 = Mirrored Repeat*
+|==============================================
+
+
+The Environment type field has been changed to include a new possible value, Add as shown here. This new value is shown in *bold font*.
+
+.Texture Attribute File Format changes for OpenFlight 16.0Environment type field
+[cols=",,,",]
+|=================================================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Int |60 |4 |Environment type
+| | | |0 = Modulate
+| | | |1 = Blend
+| | | |2 = Decal
+| | | |3 = Replace
+| | | |*4 = Add*
+|=================================================================================
+
+[[AnnexE_TextureMappingPaletteRecord2]]
+==== Texture Mapping Palette Record
+
+[[AnnexE_Parametersfor3PointPutTextureMappingType1]]
+===== Parameters for 3 Point Put Texture Mapping (Type 1)
+
+The following fields were added to the end (at the specified offsets) of the parameter subrecord.
+
+.Parameters for 3 Point Put Texture Mapping (Type 1) - changes for OpenFlight 16.0 - New Fields
+[cols=",,,",]
+|=====================================================
+|*Data Type* |*Offset* |*Length* |*Description*
+|Float |392 |4 |U Repetition
+|Float |396 |4 |V Repetition
+|=====================================================
+
+
+=== Index
+
+NOTE: Index removed during conversion to Asciidoc.

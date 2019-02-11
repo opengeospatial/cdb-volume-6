@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 24* {set:cellbgcolor:#CACCCE}|req/openflight/model-dis-origin +
+ +
+
+The CDB Point representing the DIS Origin _SHALL_ be positioned and oriented according the definition provided by the DIS Standard. This definition says that the DIS Origin is at the center of the bounding box of the entity, without articulated and attached parts. The standard also says what the orientation must be. The X-axis points forward, the Y-axis points to the right, and the Z-axis points down. All axes are aligned with the bounding box defined above. {set:cellbgcolor:#FFFFFF}
+|===

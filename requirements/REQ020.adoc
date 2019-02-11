@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 20* {set:cellbgcolor:#CACCCE}|req/openflight/model-cutout-geometry +
+ +
+
+The CDB standard requires that the Cutout geometry _SHALL_ be placed under a CDB Model Cutout Zone node.{set:cellbgcolor:#FFFFFF}
+|===

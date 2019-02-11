@@ -1,0 +1,13 @@
+== Terms and Definitions
+
+This document uses the terms defined in Sub-clause 5.3 of [OGC 06-121r8], which is based on the ISO/IEC Directives, Part 2, Rules for the structure and drafting of International Standards. In particular, the word “shall” (not “must”) is the verb form used to indicate a requirement to be strictly followed to conform to this standard.
+
+For the purposes of this document, the additional terms and definitions provided in the OGC CDB Terms and Definitions document (Volume 3) apply.
+
+=== A note on OpenFlight
+
+*OpenFlight* (or .flt) footnote:[From Wikipedia.] is a 3d geometry model file format originally developed by Software Systems Inc. for its MultiGen footnote:[https://en.wikipedia.org/w/index.php?title=MultiGen&action=edit&redlink=1] real-time 3d modeling package in 1988. Originally called Flight, the format was designed as a nonproprietary 3D model format for use by real-time 3d https://en.wikipedia.org/wiki/Visual_simulation[visual simulation] image generators. The format was later renamed to OpenFlight to denote its nonproprietary image generation (IG) usage. The MultiGen modeling package (known now as Creator footnote:[https://en.wikipedia.org/wiki/OpenFlight#cite_note-3]) and the OpenFlight format were rapidly adopted by the early commercial https://en.wikipedia.org/wiki/Flight_simulation[flight simulation] industry in the later 80's and early 90's. https://en.wikipedia.org/wiki/NASA_Ames[NASA Ames] was the first customer for the MultiGen modeling package.
+
+The early advantage OpenFlight held over many 3d geometry model file formats (https://en.wikipedia.org/wiki/Object_file[.obj], https://en.wikipedia.org/wiki/.dxf[.dxf], https://en.wikipedia.org/wiki/.3ds[.3ds]) was its specific real-time 3d graphics industry design. This means that the format is polygon based (rather than https://en.wikipedia.org/wiki/NURB[NURB] surfaces), and provides a real-time tree structure essential for real-time IG systems. Most early graphics file formats worried more about visual esthetics for non-real-time based rendering graphics packages such as https://en.wikipedia.org/wiki/Wavefront_Technologies[Wavefront Technologies], or https://en.wikipedia.org/wiki/Alias_Systems_Corporation[Alias Systems Corporation].
+
+The OpenFlight file format is still widely used today in the high end real-time visual simulation industry as the standard interchange format between different IG systems, and is currently administrated by https://en.wikipedia.org/wiki/Presagis[Presagis].

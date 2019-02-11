@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 23* {set:cellbgcolor:#CACCCE}|req/openflight/model-point-damage=states +
+ +
+
+There _SHALL_ be a single definition of this point for all damage states and all levels of details for a given model. If the DIS origin is not defined, it _SHALL_ defaults to the model origin. {set:cellbgcolor:#FFFFFF}
+|===

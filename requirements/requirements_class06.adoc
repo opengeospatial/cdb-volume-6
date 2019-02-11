@@ -1,0 +1,9 @@
+[cols="1,4",width="90%"]
+|===
+2+|*Requirements Class* – Model Switch Nodes{set:cellbgcolor:#CACCCE}
+2+|/req/openflight/model-switch-nodes {set:cellbgcolor:#FFFFFF}
+|Target type |Operations
+|Dependency |Openflight Specification
+|*Requirement 27* {set:cellbgcolor:#CACCCE} |/req/openflight/switch-mask {set:cellbgcolor:#FFFFFF}
+|*Requirement 28* {set:cellbgcolor:#CACCCE} |req/openflight/switch-mask-name{set:cellbgcolor:#FFFFFF}
+|===

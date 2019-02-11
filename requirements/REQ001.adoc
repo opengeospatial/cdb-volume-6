@@ -1,0 +1,17 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 1* {set:cellbgcolor:#CACCCE}|http://www.opengis.net/spec/CDB/1.1/openflight/header-crs +
+ +
+
+ As a result; the following OpenFlight Header records _SHALL_ be set as follows:
+
+*Projection Type:*
+
+ &#8226; Flat Earth, value 0: This is the type of projection used by most CDB Models, GTModel, GSModel, and MModel.
+
+ &#8226; Geodetic, value 5: This is the type of projection used by T2DModels.
+
+*Earth Ellipsoid Model:*
+
+&#8226; WGS-84, value 0: This is the Earth model to use with T2DModels. The field is ignored with other CDB Models. {set:cellbgcolor:#FFFFFF}
+|===

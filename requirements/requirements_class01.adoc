@@ -1,0 +1,13 @@
+[cols="1,4",width="90%"]
+|===
+2+|*Requirements Class* – tree structure{set:cellbgcolor:#CACCCE}
+2+|/req/core/tree-structure {set:cellbgcolor:#FFFFFF}
+|Target type |Operations
+|Dependency |OpenFlight Specification
+|Dependency |CDB File Management system
+|*Requirement 2* {set:cellbgcolor:#CACCCE} |/req/core/openflight/model-global-zone {set:cellbgcolor:#FFFFFF}
+|*Requirement 3* {set:cellbgcolor:#CACCCE} |/req/openflight/2dmodel {set:cellbgcolor:#FFFFFF}
+|*Requirement 4* {set:cellbgcolor:#CACCCE} |/req/openflight/2dmodel-rules {set:cellbgcolor:#FFFFFF}
+|*Requirement 5* {set:cellbgcolor:#CACCCE} |/req/openflight/2dmodels {set:cellbgcolor:#FFFFFF}
+|*Requirement 6* {set:cellbgcolor:#CACCCE} |/req/openflight/xref {set:cellbgcolor:#FFFFFF}
+|===

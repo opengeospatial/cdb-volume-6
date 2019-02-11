@@ -1,0 +1,36 @@
+[cols=",,",width="100%"]
+|=====================================================================================================================================================================================================================================================================================================
+|*Conformance Class* 2+|*/conf/openflight/model-conventions*
+|*Requirements Class* 2+|/req/openflight/model-conventions
+|*Dependency* 2+|Openflight Specification
+|*Test 7* 2+|/conf/model-conventions/crs-models
+| |*Requirement* |/req/openflight/crs-models
+| |*Test purpose* |Verifythat CDB Models use the same coordinate system convention as OpenFlight
+| |*Test method* |Visual. Pass if the CRS definitions are the same.
+| |*Test type* |Conformance
+|*Test 8* 2+|/conf/model-conventions/model-origin
+| |*Requirement* |/req/openflight/model-origin
+| |*Test purpose* |Verify that the model origin _is_ located at the center of the bounding rectangle and that along the Z axis, the origin _as_ selected allows the model to be correctly positioned on the ground for ground related models on or a water plane for surface and subsurface platforms.
+| |*Test method* |Visual. Pass if the model is correctly positioned in the display.
+| |*Test type* |Conformance
+|*Test 9* 2+|/conf/model-conventions/t2-model-coordinates
+| |*Requirement* |/req/openflight/ t2-model-coordinates
+| |*Test purpose* |Verify that the latitude (y) and longitude (x) coordinates are expressed in decimal degrees and that the values are relative to the file’s (implicit) origin which is the south-west corner of the tile.
+| |*Test method* |Visual. Pass if coordinates are expressed in decimal degrees..
+| |*Test type* |Conformance
+|*Test 10* 2+|/conf/model-conventions/roll-pitch-yaw
+| |Requirement |req/openflight/roll-pitch-yaw
+| |Test purpose |Verify that the Pitch, Roll and Yaw angles refer to rotations around the X, Y, and Z axes and Angles are measured in degrees. The Roll and Yaw angles vary from ±180 degrees while the Pitch angle is limited to the range ±90 degrees.
+| |Test method |Visual. Pass if all angles are degrees
+| |Test type |Conformance
+|*Test 11* 2+|/conf/model-conventions/geometry
+| |Requirement |req/openflight/geometry
+| |Test purpose |Verify the implementers of the CDB OpenFlight standard adhere to set of constraints, rules and guidelines as defined in OpenFlight Requirement 11 when creating the geometry of Models.
+| |Test method |Visual. Pass if all polygons are convex, all vertices of a polygon are in the same place, and that all polygon vertices (coordinates) have a counter-clockwise ordering.
+| |Test type |Conformance
+|*Test 12* 2+|/conf/model-conventions/ geometry-layer-constraint
+| |Requirement |req/openflight/ geometry-layer-constraint
+| |Test purpose |Verify that Layer 0, the base layer, contains geometry that completely encompasses the geometry of subsequent layers. Other layers areprocessed in order, one after the other. A layer is made of one or more nodes; all nodes of a given layer have the same relative priority.
+| |Test method |Visual and software. Software can check processing order. Pass if the base layer contains a geometry that encompasses the geometry of sub-layers.
+| |Test type |Conformance
+|=====================================================================================================================================================================================================================================================================================================

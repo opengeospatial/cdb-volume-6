@@ -1,0 +1,9 @@
+[cols="1,4",width="90%"]
+|===
+2+|*Requirements Class* – CRS Metadata{set:cellbgcolor:#CACCCE}
+2+|/req/core/metadata {set:cellbgcolor:#FFFFFF}
+|Target type |Operations
+|Dependency |OpenFlight Specification
+|Dependency |File Management system
+|*Requirement 1* {set:cellbgcolor:#CACCCE} |/req/core/openflight/header-crs {set:cellbgcolor:#FFFFFF}
+|===

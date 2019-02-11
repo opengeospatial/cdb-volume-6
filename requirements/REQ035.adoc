@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 35* {set:cellbgcolor:#CACCCE}|req/openflight/light-vertex-list +
+ +
+
+A Vertex List record _SHALL_ follow the OpenFlight Indexed Light Point record.  {set:cellbgcolor:#FFFFFF}
+|===

@@ -1,0 +1,65 @@
+[appendix]
+:appendix-caption: Annex
+== Conformance Class Abstract Test Suite (Normative)
+
+=== Conformance class: CRS
+
+This test is to validate that the Coordinate Reference System (CRS) header content is properly structured in the Openflight header record.
+
+include::abstract_tests/TEST001.adoc[]
+
+
+
+=== Conformance Class: Tree Structure
+
+include::abstract_tests/TEST002.adoc[]
+
+
+=== Conformance Class: Modeling Conventions
+
+The following are the conformance tests for the OpenFlight modelling conventions.
+
+
+include::abstract_tests/TEST003.adoc[]
+
+=== Conformance Class: Model Zones
+
+This conformance class tests requirements related to OpenFlight model zones.
+
+A model zone represents a component of interest on the Model. A model zone (as well as the component it represents) occupies a certain volume and is delimited by a bounding box. At least one simulator subsystem must be interested in a specific component to justify the creation of a corresponding zone. Examples of zones are a turret on a tank, or an engine on a platform, or an entrance door on a building, etc
+
+include::abstract_tests/TEST004.adoc[]
+
+
+=== Conformance Class: Model Points
+
+A model point is similar to a model zone; it identifies a location on the model that is of interest to at least one simulation client device. A point defines a local coordinate system on the model. Hence, a point has a position and an orientation. The following tests ensure that model points are correctly modeled and comply with the model points requirements class.
+
+include::abstract_tests/TEST005.adoc[]
+
+
+=== Conformance Class: Model Level Of Detail
+
+A levels-of-detail model structure is essential when the intent is to use a model in a real-time application such as flight simulation. The level-of-detail mechanism provides client-devices with the essential structure for deterministic operation. The following test determines whether the OpenFlight model and CDB data store use the proper method to determine if a level of detail is still active.
+
+include::abstract_tests/TEST006.adoc[]
+
+
+=== Conformance Class: Model Switch Nodes
+
+include::abstract_tests/TEST007.adoc[]
+
+
+=== Conformance Class: Damage Status
+
+include::abstract_tests/TEST008.adoc[]
+
+
+=== Conformance Class: Model Articulations
+
+include::abstract_tests/TEST009.adoc[]
+
+
+=== Conformance Class: Model Textures
+
+include::abstract_tests/TEST010.adoc[]

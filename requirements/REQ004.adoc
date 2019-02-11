@@ -1,0 +1,11 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 4* {set:cellbgcolor:#CACCCE}|req/openflight/2dmodel-rules +
+ +
+
+ A 2DModel _SHALL_ have at least two layers, layer 0 and layer 1.
+
+ Layer 0 _SHALL_ always empty because it represents the terrain on top of which subsequent layers are applied.
+
+ Each layer is composed of zero, one, or more OpenFlight Object nodes.{set:cellbgcolor:#FFFFFF}
+|===

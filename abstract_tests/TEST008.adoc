@@ -1,0 +1,16 @@
+[cols=",,",width="100%"]
+|==================================================================================================================================================================================================================================================
+|*Conformance Class* 2+|*/conf/openflight/model-switch-nodes*
+|*Requirements Class* 2+|/req/openflight/damage-status
+|*Dependency* 2+|Openflight Specification
+|*Test 29* 2+|/conf/ damage-status /switch-mask
+| |*Requirement* |/req/core/openflight/damage-transition
+| |*Test purpose* |Verify that the percentages representing the transitions are limited to the range [0, 99]. The value 100 is not allowed because the level of damage cannot exceed the transition value in order to select the correct state.
+| |*Test method* |Visual. Pass if values are in valid range.
+| |*Test type* |Conformance
+|*Test 30* 2+|/conf/ damage-status /switch-mask-name
+| |*Requirement* |/req/openflight/ damage-order
+| |*Test purpose* |Verify that the ordering of damage states is from left (normal state) to right (destroyed state). All intermediate states must represent increasingly damaged states from a slightly damaged state to an almost destroyed state.
+| |*Test method* |Visual. Pass if ordering is correct.
+| |*Test type* |Conformance
+|==================================================================================================================================================================================================================================================

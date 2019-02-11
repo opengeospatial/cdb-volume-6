@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 37* {set:cellbgcolor:#CACCCE}|req/openflight/texture-file-loading+
+ +
+
+In the case of GTModels and MModels, textures are separate files that _SHALL_ be loaded after the model geometry files are read and loaded by client devices; in the case of GSModels and T2DModels, the textures can be loaded concurrently with the model geometry files. {set:cellbgcolor:#FFFFFF}
+|===

@@ -1,0 +1,17 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 26* {set:cellbgcolor:#CACCCE}|req/openflight/significant-size +
+ +
+
+ The CDB Standard _SHALL:_
+
+  &#8226; Use the Significant Size associated with the LOD node to determine when to activate the node
+
+  &#8226; The Significant Size of LOD node 2 _SHALL_ be less than the Significant Size of LOD node 1.
+
+  &#8226; Features whose Significant Size is larger than 110 km (the dimension of a geocell) _SHALL_ be clipped (if a continuous surface) or ungrouped (if multiple discontinuous surfaces) until the maximum size criteria is met.
+
+  &#8226; LOD nodes _SHALL_ be sorted in decreasing order of their Significant Size attribute.
+
+  &#8226; Sibling LOD nodes _SHALL_ be mutually exclusive.{set:cellbgcolor:#FFFFFF}
+|===

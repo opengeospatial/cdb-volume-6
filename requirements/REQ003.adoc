@@ -1,0 +1,9 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 3* {set:cellbgcolor:#CACCCE}|req/openflight/2dmodel +
+ +
+
+Each 2DModel _SHALL_ be implemented as a Model Zone (section 6.5) with its own subgraph. 2DModels are disjoint and non-overlapping.{set:cellbgcolor:#FFFFFF}
+|===
+
+//CHECK

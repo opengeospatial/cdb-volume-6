@@ -1,0 +1,11 @@
+[cols=",,",width="100%"]
+|=====================================================================================================================================================
+|*Conformance Class* 2+|*/conf/openflight/model-level-of-detail*
+|*Requirements Class* 2+|/req/openflight/significant-sizes
+|*Dependency* 2+|Openflight Specification
+|*Test 26* 2+|/conf/model-level-of-detail/significant-sizes
+| |*Requirement* |/req/openflight/significant-sizes
+| |*Test purpose* |Verify that the implementation method uses the Significant Size associated with the LOD node to determine when to activate the node
+| |*Test method* |Visual.
+| |*Test type* |Conformance
+|=====================================================================================================================================================

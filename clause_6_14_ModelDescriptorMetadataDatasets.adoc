@@ -1,0 +1,440 @@
+
+=== Model Descriptor (Metadata) Datasets
+
+Each type of 3D Models has its set of ModelDescriptor datasets; they are:
+
+1.  GSModelDescriptor
+2.  GSModelInteriorDescriptor
+3.  GTModelDescriptor
+4.  GTModelInteriorDescriptor
+5.  MModelDescriptor
+
+Each file is needed to summarize and regroup the information concerning one portion of a model, its shell or its interior. The information are collected and stored in an XML file to help client devices implement efficient load management mechanism.
+
+The format of the model descriptor file is as follows:
+
+<Model_Metadata>
+
+<Name>...</Name>
+
+<Identification>...</Identification>
+
+<Mass>...</Mass>
+
+<Parts>...</Parts>
+
+<Textures>...</Textures>
+
+<Configurations>...</Configurations>
+
+<Composite_Material_Table>...</Composite_Material_Table>
+
+</Model_Metadata>
+
+==== Model Name
+
+The <Name> is an arbitrary string from the character set presented in section 2.2. This name is the human readable version of the model identification code that follows.
+
+==== Model Identification
+
+Models are either modeled representation of cultural features or moving models. In both cases, the CDB standard has a unique way to identify them. For moving models, the identification scheme corresponds to their DIS entity type. For cultural features, their feature code is used.
+
+===== Moving Model Identification
+
+The DIS entity type is a list of up to seven integers and can be specified in two different manners. All fields have a default value of zero.
+
+First, you can use a list of one to seven integers as illustrated here:
+
+<Identification>
+
+<DIS_Entity_Type>
+
+<List>...</List>
+
+</DIS_Entity_Type>
+
+</Identification>
+
+Or you can use this more verbose syntax to specify the value of individual fields:
+
+<Identification>
+
+<DIS_Entity_Type>
+
+<Kind>...</Kind>
+
+<Domain>...</Domain>
+
+<Country>...</Country>
+
+<Category>...</Category>
+
+<Subcategory>...</Subcategory>
+
+<Specific>...</Specific>
+
+<Extra>...</Extra>
+
+</DIS_Entity_Type>
+
+</Identification>
+
+All fields are limited to the range [0, 255] except the country code that can go up to 65535.
+
+===== Cultural Feature Identification
+
+For cultural features, their feature code is specified in the following manner:
+
+<Identfication>
+
+<Feature_Attribute_Catalog_Code>
+
+<Code>...</Code>
+
+<Subcode>...</Subcode>
+
+</Feature_Attribute_Catalog_Code>
+
+</Identification>
+
+The feature code has a fixed format of two letters followed by three digits; it is the same as the feature attribute described in section 5.7.1.3.24 of the CDB Standard, Volume 1: OGC CDB Core Standard:Model and Physical Database Structure. The subcode is an optional integer in the range [0, 999].
+
+==== Model Mass
+
+The model mass is optional. It makes sense only when the Model represents a moving model.
+
+<Mass>
+
+<Total>...</Total>
+
+<Metal>...</Metal>
+
+</Mass>
+
+The total mass of the model is expressed in kilograms. The portion of the model that is made of a metallic alloy is expressed as a percentage of the total mass. The value of <Metal> lies in the range [0.0, 1.0].
+
+When the model mass is specified, the total mass is mandatory while the metallic portion is optional. The total mass must be larger than zero. The metallic portion defaults to zero.
+
+==== Model Parts
+
+A Model may be separated into several parts. If the complexity of a part justifies it, each part may be split into multiple files.
+
+The whole section is optional. It is required only if more than one part exists or if a part has more than one file.
+
+If present, the section is a list of at least one part formatted like this.
+
+<Parts>
+
+<Part no="no" numFiles="numFiles" name="partName" />
+
+...
+
+</Parts>
+
+The part number is mandatory. It starts at 1 and increases by 1 for each subsequent part. The first part is also referred to as the body of the model.
+
+The number of files is optional and defaults to 1.
+
+The part name footnote:[As a guideline, it is suggested to set the part name the same as the global zone name of that part. For instance, if the part represents an external fuel tank, a good name for both the part and its global zone would be “_External Fuel Tank_”.] is optional and is used only to improve the readability of the file.
+
+==== Model Textures
+
+This section lists all textures that could be possibly used by the model. In the event the model does not use texture, the whole section is omitted. The section contains a list of textures and optional texture switches.
+
+<Textures>
+
+<Texture .../>
+
+<Texture .../>
+
+...
+
+<Switch .../>
+
+<Switch .../>
+
+...
+
+</Textures>
+
+===== Texture Metadata
+
+For each texture, the section provides the client device with the necessary information to decide when and which texture mipmap should be loaded.
+
+The section is formatted like this.
+
+<Texture no="number" name="name">
+
+<Dataset>...</Dataset>
+
+<Kind>...</Kind>
+
+<Index>...</Index>
+
+<Mipmap>min max</Mipmap>
+
+<Resolution>...</Resolution>
+
+<Coverage>
+
+<U>min max</U>
+
+<V>min max</V>
+
+</Coverage>
+
+</Texture>
+
+The texture number is a strictly positive integer to uniquely identify the texture. The texture name corresponds to the TNAM field in the texture filename as defined in Section 3.5.2.1, MModelTexture Naming Convention.
+
+The <Dataset>, <Kind>, and <Index> fields correspond respectively to the dataset number and component selectors 1 and 2; they match the D, S and T fields in the texture filename.
+
+The mipmap field defines the smallest and largest mipmap available for this texture. The value of this field is used to compose the W field in the texture filename of moving models (see examples in section 3.5.2.4).
+
+The texture resolution is expressed in texels per meter footnote:[This unit of measurement (texels per meter) is akin to DPI (dot per inch) used to quantify the resolution of printers and displays.]. It is the same for both the U and V axes even though it is recognized that it can differ between the two dimensions. The intent is to provide an indication of how precise the texture is when mapped to the model geometry. It helps client device decide which mipmap is more appropriate to use.
+
+The texture coverage is optional and defines the minimum and maximum values for the U and V texture coordinates. This information indicates if the texture is repeated along one or both axes. If the coverage is in the interval [0, 1], the texture is clamped; otherwise, it is repeated.
+
+===== Texture Switch
+
+A Texture Switch is defined when switchable textures appear in the list of textures. Switchable textures are textures that can be exchanged for one another because they share the same UV mapping, as explained in section 6.13.5.2, Model Skin Textures.
+
+The section is formatted like this.
+
+<Switch no="number" name="name">
+
+<State no="number" name="name" textures="list"/>
+
+...
+
+</Switch>
+
+The switch number is a unique positive integer identifying the switch. The switch name is a unique string limited to 32 characters; all switches are uniquely identified by a number and a name.
+
+A switch has two or more states; each state selecting a list of one or more textures. State numbers are consecutive and start at 1. The state name is a unique string also limited to 32 characters. The list of textures associated with a state contains the texture numbers of the selected textures. Note that a state (e.g., a skin) may require more than one texture, hence the need to specify a list of textures associated with a state.
+
+====== Example
+
+Assume that the following two textures are stored in the M1A2 texture folder:
+
+\CDB\MModel\601_MModelTexture\M\1\M1A2\ +
+D601_S004_T005_Wxx_M1A2.rgb +
+D601_S005_T001_Wxx_M1A2.rgb
+
+Here is an excerpt of the model metadata presenting the two textures, the switch, and the two corresponding states.
+
+<Textures>
+
+<Texture no="3" name="M1A2">
+
+<Dataset>601</Dataset>
+
+<Kind>4</Kind>
+
+<Index>5</Index>
+
+...
+
+</Texture>
+
+<Texture no="10" name="M1A2">
+
+<Dataset>601</Dataset>
+
+<Kind>5</Kind>
+
+<Index>1</Index>
+
+...
+
+</Texture>
+
+...
+
+<Switch no="1" name="Paint Scheme">
+
+<State no="1" name="Uniform Beige Paint" textures="3"/>
+
+<State no="2" name="Desert Camouflage" textures="10"/>
+
+</Switch>
+
+</Textures>
+
+The texture switch is named “Paint Scheme” because it controls the selection of the paint scheme to apply to the M1A2. The first state selects texture 3 which corresponds to a beige uniform paint; the second state selects texture 10 corresponding to a desert camouflage.
+
+Note that the texture switch mechanism is not limited to base textures; it can be used to switch light maps for example.
+
+==== Model Configurations
+
+Often, a single Model – especially a moving model – comes with a variety of possible equipment and/or ordnance. This can be as diversified as fuel tanks, missiles, radio emitters, etc. To configure a model with its ordnance, the CBD Specification defines the concept of model configuration. A configuration defines the set of equipment and ordnance attached to the various stations found on the model.
+
+The configuration section is optional. It is a list of one or more configurations defined like this.
+
+<Configurations>
+
+<Configuration>...</Configuration>
+
+...
+
+</Configurations>
+
+===== Defining Stations in a Configuration
+
+A configuration is a sequence of one or more stations, each defining one piece of equipment in one location.
+
+<Configuration name="ConfigName">
+
+<Station name="StationName">
+
+<Location>...</Location>
+
+<Equipment>...</Equipment>
+
+</Station>
+
+... other stations as needed
+
+</Configuration>
+
+The configuration and station names are both optional and are used for documentation purposes only.
+
+The location of a station is defined by its fully qualified name as specified in section 6.5.5, Model Zone Naming.
+
+===== Defining Equipment in a Station
+
+The equipment is defined by either its DIS identification or a reference to an external part, and an optional anchor point.
+
+<Equipment name="EquipmentName">
+
+<Identification>...</Identification>
+
+<External_Part>...</External_Part>
+
+<Anchor>...</Anchor>
+
+</Equipment>
+
+The equipment name is optional and is used for documentation purposes only.
+
+The anchor point is specified in the same manner as the location of a station, by providing its path (on the subordinate model) as specified in section 6.5.5, Model Zone Naming.
+
+===== Defining Equipment Names
+
+Either a DIS emitter name or a DIS entity type identifies the equipment. When the equipment is an emitter, the syntax is as follows.
+
+<Identification>
+
+<DIS_Emitter_Name>...</DIS_Emitter_Name>
+
+</Identification>
+
+Emitter names are defined by the DIS standard. For DIS, refer to Section 8.1.1 of reference [4] for a list of DIS Emitter Names. For the HLA standard, the RPR-FOM lists all emitter names. To avoid confusion, both DIS and HLA refer to emitter names using numbers. For instance, the NATO emitter AS 15 KENT altimeter is referred to as emitter 8735.
+
+When the equipment is another entity (e.g., a missile), its DIS entity type is supplied in the following manner.
+
+<Identification>
+
+<DIS_Entity_Type>...</DIS_Entity_Type>
+
+</Identification>
+
+Recall that the DIS entity type is a list of up to 7 numbers as defined by reference [4]. For example, the AGM-114K-SAL Hellfire missile would be referred to as:
+
+<DIS_Entity_Type>
+
+<List>2 2 225 1 3 5 1</List>
+
+</DIS_Entity_Type>
+
+or
+
+<DIS_Entity_Type>
+
+<Kind>2</Kind>
+
+<Domain>2</Domain>
+
+<Country>225</Country>
+
+<Category>1</Category>
+
+<Subcategory>3</Subcategory>
+
+<Specific>5</Specific>
+
+<Extra>1</Extra>
+
+</DIS_Entity_Type>
+
+Equipment can also be defined by a reference to an external part if need be. A good example of such equipment is a fuel tank.
+
+<External_Part>
+
+<Part_Number>...</Part_Number>
+
+<Configuration>...<Configuration>
+
+</External_Part>
+
+The external part is identified by its part number as defined previously in the <Parts> section.
+
+The external part may also require it own configuration. Take the example of a Hellfire missile rack attached to an attack helicopter like the Apache. The rack can hold up to 4 missiles. Each missile attaches to one of four separate weapon stations located on the rack. For this more complex example, assume the rack has only two missiles out of four. This configuration can be specified with the following piece of XML.
+
+<External_Part>
+
+<Part_Number>1</Part_Number>
+
+<Configuration>
+
+<Station name="Missile 1">
+
+<Location>\Missile_Rack\Attach_Point[1]</Location>
+
+<Equipment>
+
+<Identification>
+
+<DIS_Entity_Type>
+
+<List>2 2 225 3 5 1</List>
+
+</DIS_Entity_Type>
+
+</Identification>
+
+</Equipment>
+
+</Station>
+
+<Station name="Missile 2">
+
+<Location>\Missile_Rack\Attach_Point[2]</Location>
+
+<Equipment>
+
+<Identification>
+
+<DIS_Entity_Type>
+
+<List>2 2 225 3 5 1</List>
+
+</DIS_Entity_Type>
+
+</Identification>
+
+</Equipment>
+
+</Station>
+
+<Configuration>
+
+</External_Part>
+
+With the help of model configurations, it is possible to create several variants of a single Model, each variant defined by its own configuration.
+
+This way, one Apache can have two configurations, one when equipped with Hellfire missiles and one when equipped with rocket launchers.
+
+==== Model Composite Materials
+
+The composite material table is the last component of the Model Metadata and is defined in section 2.5.2.2, Composite Material Tables (CMT) in the CDB Standard, Volume 1: OGC CDB Core Standard: Model and Physical Database Structure.

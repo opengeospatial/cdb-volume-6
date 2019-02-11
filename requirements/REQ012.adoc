@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 12* {set:cellbgcolor:#CACCCE}|req/openflight/geometry-layer-constraint +
+ +
+
+Layer 0, the base layer, _SHALL_ contain geometry that completely encompasses the geometry of subsequent layers. Other layers _SHALL_ be processed in order, one after the other. A layer is made of one or more nodes; all nodes of a given layer _SHALL_ have the same relative priority.{set:cellbgcolor:#FFFFFF}
+|===

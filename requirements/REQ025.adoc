@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 25* {set:cellbgcolor:#CACCCE}|req/openflight/model-viewpoint +
+ +
+
+The viewpoint’s local coordinate system _SHALL_ be oriented such that the Y-axis indicates the viewing direction and the Z-axis points up.{set:cellbgcolor:#FFFFFF}
+|===

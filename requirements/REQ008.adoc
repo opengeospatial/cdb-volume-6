@@ -1,0 +1,9 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 8* {set:cellbgcolor:#CACCCE}|req/openflight/model-origin +
+ +
+
+ In the XY plane, the origin _SHALL_ be located at the center of the bounding rectangle.
+
+ Along the Z axis, the origin _SHALL_ be selected to allow the model to be correctly positioned on ground for ground-related models, or on a water plan for surface and subsurface platforms. {set:cellbgcolor:#FFFFFF}
+|===

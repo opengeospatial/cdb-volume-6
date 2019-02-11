@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 21* {set:cellbgcolor:#CACCCE}|req/openflight/model-pseudo-interior-zone +
+ +
+
+Since the pseudo-interior is a placeholder for the real interior, it _SHALL_ be placed under its own subgraph and identified by a CDB zone whose name is “Interior”. {set:cellbgcolor:#FFFFFF}
+|===

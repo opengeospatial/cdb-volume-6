@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 28* {set:cellbgcolor:#CACCCE}|req/openflight/switch-mask-name +
+ +
+
+In addition to defining a mask for each switch state, each mask _SHALL_ be named. The name of the mask _SHALL_ be representative of the state selected by that mask. {set:cellbgcolor:#FFFFFF}
+|===

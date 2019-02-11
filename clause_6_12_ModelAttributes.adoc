@@ -1,0 +1,83 @@
+
+=== Model Attributes
+
+This section defines a general attribution mechanism to add CDB and Vendor-specific attributes to any OpenFlight nodes. These attributes follows the rules of inheritance; they are automatically propagated from higher levels through lower levels of the OpenFlight graph. A child node inherits the attribution of its parent node.
+
+==== Definition
+
+Model attributes are added to OpenFlight nodes through a Comment record containing XML tags. The general format is as follows:
+
+[source,xml]
+----
+<CDB:node name="...">
+
+<ns:Attribute name="..." value="..."/>
+
+... other attributes
+
+</CDB:node>
+----
+
+<CDB:node> identifies the node to which the attributes are added. The node token can take the following values:
+
+* Zone
+* Point
+* Group
+* Object
+* Switch
+* Face
+* Mesh
+* Articulation
+* Light
+* XRef
+* LOD
+
+The XML namespace (ns) of the attribute is optional; when present it identifies the owner of the attribute. When not specified, the default namespace is CDB.
+
+Any CDB Attributes that are listed in section 5.7.1.3 can be used as node attributes. The name of the attribute is the key to search for the matching symbol into the metadata file named CDB_Attributes.xml; this file is described in section 5.1.7 and provides the means to interpret the value of the attribute.
+
+==== Vendor Attributes
+
+A vendor attribute is identified by its XML namespace. The standard uses the CDB namespace; a vendor may use any other string to identify itself.
+
+include::requirements/REQ036.adoc[]
+
+
+It is understood that vendor attributes are not interpreted by any other client-devices other than those supported by the vendor. Reliance by a vendor on Vendor Attributes can reduce the interoperability of the CDB with other vendors.
+
+==== Examples
+
+To add the LPH attribute to a CDB Light node, use the following comment:
+
+[source,xml]
+----
+<CDB:Light>
+
+<Attribute name="LPH" value="300"/>
+
+</CDB:Light>
+----
+
+Assume a T2DModel contains the Los Angeles International Airport as one of its 2DModels; the zone associated with the airport could use the APID attribute in the following manner:
+
+[source,xml]
+----
+<CDB:Zone name="Los Angeles International Airport">
+
+<Attribute name="APID" value="KLAX"/>
+
+</CDB:Zone>
+----
+
+A company named “Acme Inc.” uses the string “Acme” as the namespace qualifying its vendor-specific attributes. If the company wants to add the MyAttr attribute to a CDB Articulation, it could do so by using the following XML tags:
+
+[source,xml]
+----
+<CDB:Articulation name="Primary Gun 1" id="4416">
+
+<Acme:Attribute name="MyAttr" value="-1.23"/>
+
+</CDB:Articulation>
+----
+
+To interpret the attribute, a client application searches the file Vendor_Attributes.xml for an attribute whose symbol is MyAttr. When found, the application knows how to parse and interpret the attribute’s value. Furthermore, if the client application recognizes the identification of the vendor (Acme:), it knows what to do with MyAttr.

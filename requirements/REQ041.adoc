@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 41* {set:cellbgcolor:#CACCCE}|req/openflight/texture-palette-path +
+ +
+
+The path _SHALL_ be relative to the OpenFlight file. {set:cellbgcolor:#FFFFFF}
+|===

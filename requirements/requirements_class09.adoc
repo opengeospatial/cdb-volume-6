@@ -1,0 +1,16 @@
+[cols="1,4",width="90%"]
+|===
+2+|*Requirements Class* – Model Textures{set:cellbgcolor:#CACCCE}
+2+|/req/openflight/model-textures {set:cellbgcolor:#FFFFFF}
+|Target type |Operations
+|Dependency |Openflight Specification
+|*Requirement 37* {set:cellbgcolor:#CACCCE} |req/openflight/texture-file-loading {set:cellbgcolor:#FFFFFF}
+|*Requirement 38* {set:cellbgcolor:#CACCCE} |req/openflight/quarterly-textures {set:cellbgcolor:#FFFFFF}
+|*Requirement 39* {set:cellbgcolor:#CACCCE} |req/openflight/monthly-textures {set:cellbgcolor:#FFFFFF}
+|*Requirement 40* {set:cellbgcolor:#CACCCE} |req/openflight/texture-mipmap {set:cellbgcolor:#FFFFFF}
+|*Requirement 41* {set:cellbgcolor:#CACCCE} |req/openflight/texture-palette-path {set:cellbgcolor:#FFFFFF}
+|*Requirement 42* {set:cellbgcolor:#CACCCE} |req/openflight/texture-shadow-geometry {set:cellbgcolor:#FFFFFF}
+|*Requirement 43* {set:cellbgcolor:#CACCCE} |req/openflight/model-skin-textures {set:cellbgcolor:#FFFFFF}
+|*Requirement 44* {set:cellbgcolor:#CACCCE} |req/openflight/model-night-maps {set:cellbgcolor:#FFFFFF}
+|*Requirement 45* {set:cellbgcolor:#CACCCE} |req/openflight/night-map-generation {set:cellbgcolor:#FFFFFF}
+|===

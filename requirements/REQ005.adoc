@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 5* {set:cellbgcolor:#CACCCE}|req/openflight/2dmodels +
+ +
+
+For T2DModels, node attributes (section 6.12) _SHALL_ be permitted only at the zone levels; that is, at the global zone or at the individual 2DModel zones. Node attributes are not permitted at the Group, LOD, Object, Face, and Mesh node levels. {set:cellbgcolor:#FFFFFF}
+|===

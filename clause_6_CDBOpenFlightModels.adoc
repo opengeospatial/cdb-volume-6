@@ -1,0 +1,16 @@
+== CDB OpenFlight Models
+
+include::clause_6_1_OpenFlightFileHeader.adoc[]
+include::clause_6_2_OpenFlightModelTreeStructure.adoc[]
+include::clause_6_3_ModelingConventions.adoc[]
+include::clause_6_4_ModelIdentifiers.adoc[]
+include::clause_6_5_ModelZones.adoc[]
+include::clause_6_6_ModelPoints.adoc[]
+include::clause_6_7_ModelConforming.adoc[]
+include::clause_6_8_ModelLevelsOfDetail.adoc[]
+include::clause_6_9_ModelSwitchNodes.adoc[]
+include::clause_6_10_Model Articulations.adoc[]
+include::clause_6_11_ModelLightPoints.adoc[]
+include::clause_6_12_ModelAttributes.adoc[]
+include::clause_6_13_ModelTextures.adoc[]
+include::clause_6_14_ModelDescriptorMetadataDatasets.adoc[]

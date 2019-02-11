@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 27* {set:cellbgcolor:#CACCCE}|req/openflight/switch-mask+
+ +
+
+The switch _SHALL_ contain one mask per state. Note that the first mask, mask index 0, is the default mask. This means that the value of the Current Mask field in the Switch record _SHALL_ be 0. {set:cellbgcolor:#FFFFFF}
+|===

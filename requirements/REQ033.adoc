@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 33* {set:cellbgcolor:#CACCCE}|req/openflight/gimbal-limits +
+ +
+
+Gimbal limits are mandatory on DOF nodes and the appropriate flags _SHALL_ be set to specify which degrees of freedom are controlled by a particular articulation. {set:cellbgcolor:#FFFFFF}
+|===

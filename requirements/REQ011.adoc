@@ -1,0 +1,22 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 11* {set:cellbgcolor:#CACCCE}|req/openflight/geometry +
+ +
+
+ Implementers of the CDB standard _SHALL_ adhere to the following set of constraints, rules and guidelines when creating the geometry of Models.
+
+ &#8226; Create convex polygons. All lines joining any two points in the interior of the polygon also lie in the interior.
+
+ &#8226; Create coplanar vertices. All of the vertices defining a polygon should lie in the same plane (required by virtually all rendering engines).
+
+ &#8226; A polygon’s front face _SHALL_ be defined by a counter-clockwise ordering of its vertices.
+
+ &#8226; Avoid T vertices. T-vertices occur when two or more adjacent polygons share an edge, and the polygons do not share a common vertex on that edge.
+
+ &#8226; Avoid coplanar faces. A coplanar face is a polygon that lies directly on top of another polygon. Z-buffer fighting can occur when a Z-buffer system cannot resolve which polygon to display on top. The CDB standard strongly recommends changing one of the coplanar faces to be a subface of the other in the hierarchy so that the client device such as an Image Generator can draw the faces in the correct order. An alternative is to use the Relative Priority field to implement layering (see section 6.3.4 below).
+
+ &#8226; Favor mesh over individual polygons. The OpenFlight Mesh record allows the creation of triangle fans, triangle strips, quadrilateral strips, and indexed face sets. This construct is by far preferable to individual polygons built using the OpenFlight Face record.
+
+ &#8226; Make use of instancing. Avoid repeating identical pieces of geometry. Create one object and repeat it by having multiple instances in different locations..
+{set:cellbgcolor:#FFFFFF}
+|===
