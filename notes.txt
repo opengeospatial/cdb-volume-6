@@ -5,6 +5,7 @@ Judging by the identifier, A.6 should be titled Model Level Of Detail. So it has
 There was a typo in FIgure 6-43 caption. "Echange and Additive LOD Nodes" should be "Exchange and Additive LOD Nodes"
 
 Figure 6-44 is missing
+NOTE: In the original CDB submission, there was a Figure 6-44. However, an update to the best practice based on revision guidance from the community resulted in replacements of Clauses 6.8.4 and 6.8.5 and the Figure was no longer needed.
 
 MS Word version had two tables labelled	Table 6-25. The second one has now been labelled Table 6-25b in the Asciidoc version.
 
