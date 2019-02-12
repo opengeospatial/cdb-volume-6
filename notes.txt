@@ -2,10 +2,10 @@ A.5 (Model Points) and A.6 have the same name (Model Points).
 
 Judging by the identifier, A.6 should be titled Model Level Of Detail. So it has been retitled in the Asciidoc version.
 
-
-
 There was a typo in FIgure 6-43 caption. "Echange and Additive LOD Nodes" should be "Exchange and Additive LOD Nodes"
 
 Figure 6-44 is missing
 
 MS Word version had two tables labelled	Table 6-25. The second one has now been labelled Table 6-25b in the Asciidoc version.
+
+Word document was corrected as specified above. Also corrected the ToC and List of Figure.
