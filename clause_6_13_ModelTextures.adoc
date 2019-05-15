@@ -119,7 +119,7 @@ ifndef::backend-pdf[]
 \[Texture\ Dimension = \ 2^{n}\  \times \ 2^{m}\]
 endif::[]
 ifdef::backend-pdf[]
-image::images/textureDimension.png[]
+image::math/textureDimension.png[]
 endif::[]
 
 Where _n_ and _m_ are positive integers (_n_, _m_ ≥ 1).
@@ -135,7 +135,7 @@ ifndef::backend-pdf[]
 \[Number\ of\ Mipmaps = \max\left( n,m \right) + 1\]
 endif::[]
 ifdef::backend-pdf[]
-image::images/mipmap.png[]
+image::math/mipmap.png[]
 endif::[]
 
 For instance, a texture whose dimension is 2^3^ × 2^4^ has a total of 5 mipmaps.
@@ -151,7 +151,7 @@ ifndef::backend-pdf[]
 \[Texture\ Size = 2^{W}\ \]
 endif::[]
 ifdef::backend-pdf[]
-image::images/texturesize.png[]
+image::math/texturesize.png[]
 endif::[]
 
 Where _W_ is a non-negative integer (_W_ ≥ 0).
@@ -434,9 +434,16 @@ The night map alpha channel is in fact a mask identifying which portions of the 
 
 //Useful resource https://en.wikibooks.org/wiki/LaTeX/Mathematics
 
+
+
+[.text-center]
+ifndef::backend-pdf[]
 \[C = C_b \cdot (1-A_n)+C_n \cdot A_n\]
 //latexmath:[\[C = C_b \cdot (1-A_n)+C_n \cdot A_n\]]
-//image::images/image51.png[image,width=157,height=24]
+endif::[]
+ifdef::backend-pdf[]
+image::math/ccb.png[align=center]
+endif::[]
 
 [.text-center]
 where…
