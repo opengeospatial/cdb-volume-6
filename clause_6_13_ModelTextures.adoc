@@ -112,8 +112,15 @@ It is generally accepted by the modeling community to limit texture dimensions t
 
 To preserve the original texture resolution as much as possible, it is suggested to resize the source texture to the nearest footnote:[Note here that we do not recommend resizing to the _next_ power of 2; instead, resize to the _nearest_ power of 2.] power of 2. For instance, if a source texture measures 72 pixels wide by 13 pixels high, it is recommended to resize it to 64 by 16 pixels.
 
-\[Texture\ Dimension = \ 2^{n}\  \times \ 2^{m}\]
+
 //latexmath:[\[Texture\ Dimension = \ 2^{n}\  \times \ 2^{m}\]]
+
+ifndef::backend-pdf[]
+\[Texture\ Dimension = \ 2^{n}\  \times \ 2^{m}\]
+endif::[]
+ifdef::backend-pdf[]
+image::images/textureDimension.png[]
+endif::[]
 
 Where _n_ and _m_ are positive integers (_n_, _m_ ≥ 1).
 
@@ -122,9 +129,14 @@ Where _n_ and _m_ are positive integers (_n_, _m_ ≥ 1).
 
 include::requirements/REQ040.adoc[]
 
-
-\[Number\ of\ Mipmaps = \max\left( n,m \right) + 1\]
 //latexmath:[\[Number\ of\ Mipmaps = \max\left( n,m \right) + 1\]]
+
+ifndef::backend-pdf[]
+\[Number\ of\ Mipmaps = \max\left( n,m \right) + 1\]
+endif::[]
+ifdef::backend-pdf[]
+image::images/mipmap.png[]
+endif::[]
 
 For instance, a texture whose dimension is 2^3^ × 2^4^ has a total of 5 mipmaps.
 
@@ -132,8 +144,15 @@ For instance, a texture whose dimension is 2^3^ × 2^4^ has a total of 5 mipmaps
 
 The naming conventions of all model textures are described in Chapter 3 Volume 1: OGC CDB Core Standard: Model and Physical Data Store Structure. For texture file whose name uses the W field, the value of the field is a power of 2 representing the largest dimension of a (possibly rectangular) texture.
 
-\[Texture\ Size = 2^{W}\ \]
+
 //latexmath:[\[Texture\ Size = 2^{W}\ \]]
+
+ifndef::backend-pdf[]
+\[Texture\ Size = 2^{W}\ \]
+endif::[]
+ifdef::backend-pdf[]
+image::images/texturesize.png[]
+endif::[]
 
 Where _W_ is a non-negative integer (_W_ ≥ 0).
 
@@ -416,7 +435,7 @@ The night map alpha channel is in fact a mask identifying which portions of the 
 //Useful resource https://en.wikibooks.org/wiki/LaTeX/Mathematics
 
 \[C = C_b \cdot (1-A_n)+C_n \cdot A_n\]
-
+//latexmath:[\[C = C_b \cdot (1-A_n)+C_n \cdot A_n\]]
 //image::images/image51.png[image,width=157,height=24]
 
 [.text-center]
