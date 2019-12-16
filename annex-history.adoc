@@ -8,4 +8,5 @@
 |2016-02-12 |1.0 |C. Reed |Many |Many edits, added requirements, requirements classes, and Annex A
 |2016-02-26 |1.0 |C. Reed |Annex A |Finish ATS
 |2017-12-28 |1.1 |C. Reed |Various |Minor edits. Change URI to be 1.1 consistent.
+|2019-12-16 |1.2 |C. Reed | Various |Changes for version 1.2
 |===
