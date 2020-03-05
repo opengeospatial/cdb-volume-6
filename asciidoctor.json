@@ -1,0 +1,12 @@
+{
+        "1": {
+                "OGC_doc_number": "16-009r5",
+                "urn":"http://www.opengis.net/doc/BP/CDB/openflight/1.2",
+                "title":"Volume 6: OGC CDB Rules for Encoding CDB Models using OpenFlight (Best Practice)",
+                "path":"standard_document.adoc",
+                "options": ["--trace"],
+                "a":[
+                        "data-uri"
+                ]
+        }
+}
