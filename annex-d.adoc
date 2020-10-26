@@ -5,7 +5,6 @@
 [[AnnexD_Overview]]
 === D - Overview
 
-
 This section describes the changes in the OpenFlight Scene Description between versions 15.7 and 15.8 as well as the errors contained in previous versions of this document that have been corrected in this version.
 
 OpenFlight version 15.8 coincides with MultiGen Creator version 2.6 and the OpenFlight API version 2.6. The changes made for this version are:
@@ -43,7 +42,6 @@ Also new in this version of the document is the addition of the “offset” col
 [[AnnexD_DocumentCorrections]]
 === Document Corrections
 
-
 The errors corrected in this version of the document are described in the sections that follow.
 
 [[AnnexD_TextRecord]]
@@ -80,7 +78,6 @@ The Relative priority field, included erroneously in the previous version of thi
 |*Data Type* |*Offset* |*Length* |*Description*
 |Int |20 |2 |Relative priority
 |============================================================
-
 
 The Feature ID field, included erroneously in the previous version of this document, has been removed from the specification for OpenFlight 15.8. The offsets of fields following this field have been adjusted accordingly.
 
@@ -161,7 +158,6 @@ A field, previously labeled “Reserved” in prior versions of this document, h
 |Int |276 |2 |UTM zone (for UTM projections - negative value means Southern hemisphere)
 |======================================================================================
 
-
 For a complete description of the header record, see <<AnnexB_HeaderRecord>> .
 
 [[AnnexD_GroupRecord]]
@@ -180,7 +176,6 @@ The following fields were added to the end (at the specified offsets) of the gro
 |Float |40 |4 |Last frame duration in seconds
 |==============================================
 
-
 The Flags field has been changed to include a new bit which can be used to specify backwards animations as shown here. The new bit is shown in *bold font*.
 
 .Group Record changes for OpenFlight15.8 - Flags field
@@ -198,7 +193,6 @@ The Flags field has been changed to include a new bit which can be used to speci
 | | | |7-31 = Spare
 |==============================================
 
-
 For a complete description of the group record, see <<AnnexB_GroupRecord>>.
 
 [[AnnexD_LevelofDetailRecord]]
@@ -214,7 +208,6 @@ The following field was added to the end (at the specified offset) of the level 
 |*Data Type* |*Offset* |*Length* |*Description*
 |Double |72 |8 |Significant size
 |==============================================
-
 
 For a complete description of the level of detail record, see <<AnnexB_LevelofDetailRecord>>.
 

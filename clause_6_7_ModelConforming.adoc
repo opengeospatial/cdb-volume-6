@@ -97,7 +97,6 @@ image::images/ApplicationofLineandPlaneConformalModeson3dRoads.png[width=800,ali
 [#img_ApplicationofLineandPlaneConformalModeson3dRoads,reftext='{figure-caption} {counter:figure-num}']
 *_{figure-caption}{counter:figure-num}. Application of Line and Plane Conformal Modes on 3d Roads_*
 
-
 The plane that is used to specify the conforming is defined by a Face node with the following XML tags:
 
 _________________

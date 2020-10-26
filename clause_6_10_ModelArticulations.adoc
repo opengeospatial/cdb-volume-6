@@ -1,10 +1,7 @@
 
 === Model Articulations
 
-
 include::requirements/requirements_class08.adoc[]
-
-
 
 ==== Definition
 

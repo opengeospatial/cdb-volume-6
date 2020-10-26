@@ -1,15 +1,11 @@
 
 === Model Textures
 
-
 include::requirements/requirements_class09.adoc[]
-
-
 
 To achieve a certain degree of realism, models require the use of textures. Furthermore, textures add details to a model without increasing its polygon count. This is excellent to reduce the complexity of the geometry but at the same time, it creates a load management issue for client devices that are interested in these textures.
 
 include::requirements/REQ037.adoc[]
-
 
 A client device discovers the existence of textures while loading the model.
 
@@ -32,16 +28,12 @@ The CDB standard supports the following type of Base Textures.
 
 include::requirements/REQ038.adoc[]
 
-
 The presence of a quarterly texture reference in model geometry tells the client-device that a quarterly texture set is available. This allows the client-device to select any one of the available 4 textures at rendering time. Only one of the textures need be referenced by the OpenFlight scenegraph geometry, preferably the third quarter texture. It is also assumed that all 4 textures share the same UV mapping.
-
 
 [start=1]
 .  _Monthly Textures:_ A set of 12 textures, each representative of a month within the calendar year used with GTModels, GSModels, T2DModels and T3DModels.
 
-
 include::requirements/REQ039.adoc[]
-
 
 The presence of a monthly texture reference in model geometry tells the client-device that a monthly texture set is available. This allows the client-device to select any one of the available 12 textures at rendering time. Only one of the textures need be referenced by the OpenFlight scenegraph geometry, preferably the June texture. It is also assumed that all 12 textures share the same UVmapping.
 
@@ -318,7 +310,6 @@ image::images/image45.png[image,width=276,height=297][[_Ref244589825]]
 [#img_ExampleofaShadowMapintheXYPlane,reftext='{figure-caption} {counter:figure-num}']
 *_{figure-caption}{counter:figure-num}. Example of a Shadow Map in the XY Plane_*
 
-
 A projected shadow map is a monochrome (single-component) texture without transparency. It represents the mask to cut out the contour of the model. In theory, a black and white texture would be enough; however, shades of gray are permitted to represent semi-transparent surfaces that could be present on the model. In any case, a value of 0 (black) means the model does not block the passage of lights. The opposite value, 1 (white), indicates the model completely obstruct the light.
 
 Because the shape of the model may change with damage states, each model state should have its own set of projected shadow maps. Section 6.9.2.2 describes damage states.
@@ -327,9 +318,7 @@ Shadow maps are general base textures. Their Texture Kind is 007 and their Textu
 
 To illustrate the naming convention, assume the shadow map from Figure 6‑50: Example of a Shadow Map in the XY Plane, is called “aircraft”. According to Section 3.5.2.1, MModelTexture Naming Convention, and Section 5.5, MModel Library Datasets, the resulting file name would be:
 
-
 D601_S007_T001_Wnn_aircraft.rgb
-
 
 The value Wnn represents the texture size, 2^nn^, and is explained in Section 6.13.3.2, Texture Size.
 
@@ -345,17 +334,13 @@ image::images/image46.png[image,width=394,height=344]
 [#img_TheM1A2AbramswithDesertCamouflage,reftext='{figure-caption} {counter:figure-num}']
 *_{figure-caption}{counter:figure-num}. The M1A2 Abrams with Desert Camouflage_*
 
-
-
 image::images/image47.png[image,width=418,height=316]
 [#img_TheM1A2AbramswithaForestCamouflage,reftext='{figure-caption} {counter:figure-num}']
 *_{figure-caption}{counter:figure-num}. The M1A2 Abrams with a Forest Camouflage_*
 
-
 The two different textures for this tank qualify for use as skins since they have been designed in such a way that they can be exchanged for one another without affecting their mapping on the affected polygons.
 
 include::requirements/REQ043.adoc[]
-
 
 OpenFlight itself does not provide an explicit mechanism to change the base texture assigned to faces. In fact, OpenFlight supports a single base texture per face record. The other textures that can be added to a face are called layers and none of them is a replacement for the base texture.
 
@@ -367,7 +352,6 @@ image::images/image48.png[image,width=396,height=396]
 [#img_M1A2DesertSkinMosaic,reftext='{figure-caption} {counter:figure-num}']
 *_{figure-caption}{counter:figure-num}. M1A2 Desert Skin Mosaic_*
 
-
 The following texture kinds implement the concept of model skins:
 
 * Kind 002 – Monthly Representation
@@ -375,7 +359,6 @@ The following texture kinds implement the concept of model skins:
 * Kind 004 – Uniform Paint Scheme
 * Kind 005 – Camouflage Paint Scheme
 * Kind 006 – Airline Paint Scheme
-
 
 Paint schemes apply to moving models only. Annex O lists available paint schemes (Volume 2: OGC CDB Core: Model and Physical Structure Annexes).
 
@@ -409,18 +392,13 @@ image::images/image49.png[image,width=423,height=206]
 [#img_BaseTexture,reftext='{figure-caption} {counter:figure-num}']
 *_{figure-caption}{counter:figure-num}. BaseTexture_*
 
-
 Figure 6‑55: Night Map, is the model’s corresponding night map and shows the same portholes but this time brighter to reflect the fact that cabin lights are on. This time, notice the appearance of the cockpit windows as well as the presence of colors in them. Remember that this texture is used to add details that may be missing from the base texture.
 
 image::images/image50.png[image,width=451,height=226]
 [#img_NightMap,reftext='{figure-caption} {counter:figure-num}']
 *_{figure-caption}{counter:figure-num}. Night Map_*
 
-
-
 include::requirements/REQ044.adoc[]
-
-
 
 ====== Night Map Generation
 
@@ -428,13 +406,9 @@ A night map is mapped on top of its base texture using a Decal texture environme
 
 include::requirements/REQ045.adoc[]
 
-
 The night map alpha channel is in fact a mask identifying which portions of the base texture are replaced by the night map. Accordingly, the alpha channel contains a value of 0 when the corresponding texel of the base texture is left intact. However, the alpha channel will contain the value 1 when the corresponding texel of the base texture is replaced by the equivalent night map texel. Overall, the Decal environment mapping applies the following transformation to the base texture.
 
-
 //Useful resource https://en.wikibooks.org/wiki/LaTeX/Mathematics
-
-
 
 [.text-center]
 ifndef::backend-pdf[]
@@ -470,7 +444,6 @@ A light map also contains a mask related to the night map when present. Remember
 
 As opposed to a night map, a light map does not have constraints. More specifically:
 
-
 A light map does not need to be of the same size as its base texture.
 
 A light map has its own UV mapping.
@@ -488,20 +461,17 @@ image::images/image55.png[image,width=437,height=219]
 [#img_LightMap,reftext='{figure-caption} {counter:figure-num}']
 *_{figure-caption}{counter:figure-num}. Light Map_*
 
-
 Figure 6‑57: Combined Effect of Base Textures and Light Maps, shows on the actual aircraft the result of applying the light map from Figure 6‑56: Light Map to the base texture from Figure 6‑54: Base Texture. Notice that portholes and cockpit windows are still dark since the base texture has not been modified by the night map yet.
 
 image::images/image56.png[image,width=431,height=162]
 [#img_CombinedEffectofBaseTexturesandLightMaps,reftext='{figure-caption} {counter:figure-num}']
 *_{figure-caption}{counter:figure-num}. Combined Effect of Base Textures and Light Maps_*
 
-
 Figure 6‑58: Combined Effect of Night and Light Maps, shows the result of adding the night map to the base texture and then applying the light map. This time, we can clearly see the lights coming through portholes and cockpit windows.
 
 image::images/image57.png[image,width=439,height=163]
 [#img_CombinedEffectofNightandLightMaps,reftext='{figure-caption} {counter:figure-num}']
 *_{figure-caption}{counter:figure-num}. Combined Effect of Night and Light Maps_*
-
 
 ====== How and When to Use Night Maps and Light Maps
 
@@ -540,7 +510,6 @@ image::images/image58.jpeg[tangent-space Normal Map,width=341,height=341]
 [#img_NormalMapSample,reftext='{figure-caption} {counter:figure-num}']
 *_{figure-caption}{counter:figure-num}. Normal Map Sample_*
 
-
 Typically, the normal points away from the surface, and not toward the underlying surface. For this reason, the value of the k-component of the normal is positive, most of the time, resulting in a bluish tint of the map. A negative k-component could indicate the presence of a cliff with an overhang, for instance.
 
 ===== Model Detail Texture Maps
@@ -560,7 +529,6 @@ The net effect of applying a Detail Texture Map is to highlight (> 0) or darken 
 image::images/image59.jpeg[Image:ExampleDetailTex.jpg,width=341,height=341]
 [#img_DetailTextureMapSample,reftext='{figure-caption} {counter:figure-num}']
 *_{figure-caption}{counter:figure-num}. Detail Texture Map Sample_*
-
 
 Recall that a detail texture map is a mean of adding high-frequency (spatial) details to a rather low-frequency image.
 

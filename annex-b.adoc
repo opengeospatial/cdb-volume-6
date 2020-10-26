@@ -18,11 +18,6 @@ November 2004
 
 image::images/image63.jpeg[image,width=528,height=166]
 
-
-
-
-
-
 [[AnnexB_Contents]]
 === Contents
 

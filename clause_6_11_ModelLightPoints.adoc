@@ -17,8 +17,6 @@ Light type naming conventions are defined in Section 2.3 of the Volume 1: OGC CD
 
 include::requirements/REQ035.adoc[]
 
-
-
 The list of vertices contains one vertex if a single light point is defined. The list contains several vertices when multiple independent light points are defined. An optional matrix and replication count permits the definition of a light string.
 
 [#table_OpenFlightRecordsforaLightPoint,reftext='Table 6-32']

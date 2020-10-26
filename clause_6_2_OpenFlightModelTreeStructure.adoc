@@ -52,10 +52,7 @@ A 2DModel is comprised of multiple layers; the layer number is expressed by the 
 
 T2DModels being an alternate representation of the terrain and its imagery and materials, a number of restrictions are necessary to ensure client devices can consume the dataset efficiently.
 
-
 include::requirements/REQ004.adoc[]
-
-
 
 All Face and Mesh nodes share exactly the same set of graphic attributes (color, textures, material, and other flags). Stated differently, the Face and Mesh nodes provide the shape of the layer while the Object node controls its appearance.
 

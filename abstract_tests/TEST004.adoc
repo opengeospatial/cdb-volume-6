@@ -21,7 +21,7 @@
 |*Test 16* 2+|/conf/ model-zone /hot-spot-temperature
 | |Requirement |req/openflight/hot-spot-temperature
 | |Test purpose |Verify that temperatures are expressed as integer Celsius.
-| |Test method |Visual. Pass if temperatures are integer Censius
+| |Test method |Visual. Pass if temperatures are integer Celsius
 | |Test type |Conformance
 |*Test 17* 2+|/conf/ model-zone /model-footprint-zones
 | |Requirement |req/openflight/ model-footprint-zones

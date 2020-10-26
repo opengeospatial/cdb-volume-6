@@ -5,7 +5,7 @@
 |*Dependency* 2+|Openflight Specification
 |*Test 32* 2+|/conf/model-articulations/articulation-node-rotation
 | |*Requirement* |/req/core/openflight/model-point-damage-states
-| |*Test purpose* |Verify that the translation rate is expressed in meters per second. Verify that the rotation rate is expressed in degrees per second. Finally, verify that the scaling rate is expressesd in units per second. When not specified, verify that a default rate of zero is used.
+| |*Test purpose* |Verify that the translation rate is expressed in meters per second. Verify that the rotation rate is expressed in degrees per second. Finally, verify that the scaling rate is expressed in units per second. When not specified, verify that a default rate of zero is used.
 | |*Test method* |Visual. Pass if units of measure are correct.
 | |*Test type* |Conformance
 |*Test 33* 2+|/conf/model-articulations /gimbal-limits

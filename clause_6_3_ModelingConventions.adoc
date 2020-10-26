@@ -3,14 +3,12 @@
 
 include::requirements/requirements_class02.adoc[]
 
-
-
 ==== Model Coordinate Systems
 
 include::requirements/REQ007.adoc[]
 
 
-<<img_ModelCoordinateSystem>>: Model Coordinate System is a screenshot footnote:[Most figures in this chapter are actual screenshots from Creator.] of Creator footnote:[Creator or CAD Creator is a Siemans product. Mention of Creator in the CDB standard IS NOT an endorsement of that product.] showing a CAD view of a semi-transparent cube.
+<<img_ModelCoordinateSystem>>: Model Coordinate System is a screenshot footnote:[Most figures in this chapter are actual screenshots from Creator.] of Creator footnote:[Creator or CAD Creator is a Siemens product. Mention of Creator in the CDB standard IS NOT an endorsement of that product.] showing a CAD view of a semi-transparent cube.
 
 image::images/image5.png[image,width=448,height=329]
 [#img_ModelCoordinateSystem,reftext='{figure-caption} {counter:figure-num}']

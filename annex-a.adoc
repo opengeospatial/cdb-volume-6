@@ -8,16 +8,13 @@ This test is to validate that the Coordinate Reference System (CRS) header conte
 
 include::abstract_tests/TEST001.adoc[]
 
-
-
 === Conformance Class: Tree Structure
 
 include::abstract_tests/TEST002.adoc[]
 
-
 === Conformance Class: Modeling Conventions
 
-The following are the conformance tests for the OpenFlight modelling conventions.
+The following are the conformance tests for the OpenFlight modeling conventions.
 
 
 include::abstract_tests/TEST003.adoc[]

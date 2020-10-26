@@ -2,12 +2,10 @@
 :appendix-caption: Annex
 ==  Summary of Changes Version 15.7
 
-
 [red]#*CDB OpenFlight Readers:*# This section is not applicable to CDB-compliant OpenFlight readers. The first version of the CDB standard is based on OpenFlight v16.0.
 
 [[AnnexC_Overview]]
 === C - Overview
-
 
 This section describes the changes in the OpenFlight Scene Description between versions 15.6 and 15.7. OpenFlight version 15.7 coincides with MultiGen Creator versions 2.4 through 2.5.1 and the OpenFlight API versions 2.4 through 2.5.1. The changes made for this version are:
 

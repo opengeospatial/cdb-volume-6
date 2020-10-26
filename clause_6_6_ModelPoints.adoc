@@ -7,10 +7,7 @@ In some respect, a point and a zone are similar and can be used interchangeably.
 
 Again, the OpenFlight Group Node mechanism provides a convenient means of implementing the concept of a point because a transformation can be added to the node.
 
-
 include::requirements/requirements_class04.adoc[]
-
-
 
 ==== Definition
 
@@ -49,7 +46,6 @@ A model point is used in several occasions such as defining the attach point whe
 A Model that is intended as a DIS entity requires a point that defines the origin of the entity’s coordinate system. This point is the center of the entity’s bounding volume excluding its articulated and attached parts footnote:[This definition can be found on page 3 of reference [4].]. On a DIS network, the location of an entity is expressed relative to this point.
 
 include::requirements/REQ023.adoc[]
-
 
 The following XML tag identifies the point.
 
@@ -102,7 +98,6 @@ The snapshot below shows the proper location and orientation of the DIS origin o
 image::images/image35.jpeg[image,width=460,height=336]
 [#img_TheDISOrigonoftheChinookHelicopter,reftext='{figure-caption} {counter:figure-num}']
 *_{figure-caption}{counter:figure-num}. The DIS Origon of the Chinook Helicopter_*
-
 
 If you watch carefully, you will notice that the DIS axis system is aligned with the fuselage and makes an angle with the CDB XY plane.
 

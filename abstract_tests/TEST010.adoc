@@ -8,7 +8,7 @@
 | |*Test purpose* |Verify thatforn the case of GTModels and MModels, textures are separate files that are loaded after the model geometry files are read and loaded by client devices; in the case of GSModels and T2DModels, the textures can be loaded concurrently with the model geometry files.
 | |*Test method* |Visual. Pass if units of measure are correct.
 | |*Test type* |Conformance
-|*Test 38* 2+|/conf/model- textures/qualterly-textures
+|*Test 38* 2+|/conf/model- textures/quarterly-textures
 | |*Requirement* |/req/openflight/quarterly-textures
 | |*Test purpose* |Verify that the quarterly textures are provided as a complete set, i.e., it is assumed that all 4 textures of the same kind (i.e., all four textures have their component selector 1 set to 003) and are all present in the model’s texture directory
 | |*Test method* |Visual. Pass if flags are correctly set.

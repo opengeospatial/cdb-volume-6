@@ -3,10 +3,7 @@
 
 A Switch Node allows the selection of zero or more children by invoking a selector mask. Any combination of children can be selected per masks and the number of definable masks is unlimited. The CDB standard makes use of OpenFlight Switch Nodes to control the state of Model Components (zones and points).
 
-
 include::requirements/requirements_class06.adoc[]
-
-
 
 ==== Definition
 
@@ -24,9 +21,7 @@ XML tags in the comment record are added to the switch’s primary record to ide
 </CDB:Switch>
 ------
 
-
 include::requirements/REQ027.adoc[]
-
 
 As an example, if the switch has 3 children, each representing a separate state of the parent zone, then the switch needs 3 masks, each selecting one child.
 
@@ -91,9 +86,7 @@ To identify a damage state switch, use the following XML tags in the switch comm
 
 The XML element <Damage_Level> is a list of percentages representing the transitions between child nodes of the switch. The list counts ‘n-1’ entries where ‘n’ is the number of states.
 
-
 include::requirements/REQ029.adoc[]
-
 
 To illustrate the concept of level of damage, assume a damage state switch has 3 child nodes representing the zone in normal, damaged, and destroyed states. Also, assume that the modeler’s intent is to switch to the damaged state when the level of damage exceeds 25 %, and to switch to the destroyed state when the level of damage exceeds 75 %. Here, the XML tag associated with the switch should look like this.
 
@@ -147,7 +140,6 @@ image::images/image42.png[image,width=279,height=279]
 [#img_ExampleofaTextureRepresentingaRotor,reftext='{figure-caption} {counter:figure-num}']
 *_{figure-caption}{counter:figure-num}. Example of a Texture Representing a Rotor_*
 
-
 Motion blur textures are general base textures with a Texture Kind of S001. The Texture Index (Tnn) is used to sequentially number several motion blur textures representing the same object.
 
 The use of motion blur textures can be combined with DOF and Switch nodes to produce efficient switching between several versions of a single rotating part.
@@ -157,7 +149,6 @@ The following subtree illustrates how four versions of the above rotor could be 
 image::images/image43.png[image,width=363,height=284]
 [#img_MultipleVersionsofRotatingParts,reftext='{figure-caption} {counter:figure-num}']
 *_{figure-caption}{counter:figure-num}. Multiple Versions of Rotating Parts_*
-
 
 In this example, three textures are used to represent an increasingly blurred rotor.
 
@@ -182,7 +173,6 @@ When modeling solid and blurred objects in this manner, the CDB Standard require
 The XML element <Blurriness> is a list of percentages representing the transitions between child nodes of the switch. The list counts ‘n-1’ entries where ‘n’ is the number of child nodes.
 
 include::requirements/REQ031.adoc[]
-
 
 To illustrate the concept of level of blurriness, assume a motion blur switch has two child nodes. Also, assume that the modeler’s intent is to switch to the second node when the level of blurriness exceeds 10 %. Here, the XML tag associated with the switch should look like this.
 

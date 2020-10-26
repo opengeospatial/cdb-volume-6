@@ -55,14 +55,11 @@ The volume attribute is optional and specifies whether the zone represents a clo
 | COMMENT (mandatory)
 |===
 
-
 Note the use of the MATRIX record. It is necessary when the zone has a different position or orientation than its parent node. A zone can be thought of as a separate Model in itself. A zone has a natural orientation and its local coordinate system must indicate where their front, right, and back sides are. A zone is subject to the same convention as the model itself regarding the orientation of its coordinate system.
 
 ==== Global Zones
 
-
 include::requirements/REQ015.adoc[]
-
 
 Figure 6‑13 illustrates the location of the global zone in the graph hierarchy.
 
@@ -351,10 +348,7 @@ It is specified using the following XML syntax:
 
 Polygons or meshes that are tagged as Model Cutout can be used by client-devices to identify the portion of the terrain that needs to be removed in order to reveal the interior of the model (say a building interior or a tunnel interior). The Model Cutout is necessary for models straddling the terrain surface and whose interior is modeled and viewed from within. The reason for this is that when the model is altitude-conformed onto the terrain, a hole must be cut into the terrain-LOD, so that the terrain itself does not visually interfere with the modeled building or tunnel interior.
 
-
 include::requirements/REQ020.adoc[]
-
-
 
 This CDB node facilitates the identification and discovery of model cutouts by client-devices. The subgraph representing the cutout is presented here.
 
@@ -682,7 +676,7 @@ A Partition zone has Apertures, makes reference to all Surfaces composing it, an
 
 The <Label> is optional. It allows the modeler to better identify the type of Partition: wall, floor, ceiling, etc.
 
-The <Room> tag is mandatory and is used to identify the two Rooms adjacent to the Partition footnote:[Note that the CDB standard follows established UHRB conventions as it relates to partitions, namely that all partitions must be clipped so that there are no more than two neighbouring rooms.]. For this reason, there must be exactly two <Room> tags. The path to an adjacent Room is as specified in section 6.5.5, Model Zone Naming. Note that UHRB defines the concept of an “outside” room when the partition defines a building outside wall. In CDB, the path of this outside room is \Shell\Exterior as illustrated in 6.5.6.4.1, Model Pseudo-Interior.
+The <Room> tag is mandatory and is used to identify the two Rooms adjacent to the Partition footnote:[Note that the CDB standard follows established UHRB conventions as it relates to partitions, namely that all partitions must be clipped so that there are no more than two neighboring rooms.]. For this reason, there must be exactly two <Room> tags. The path to an adjacent Room is as specified in section 6.5.5, Model Zone Naming. Note that UHRB defines the concept of an “outside” room when the partition defines a building outside wall. In CDB, the path of this outside room is \Shell\Exterior as illustrated in 6.5.6.4.1, Model Pseudo-Interior.
 
 The <Surface> tag appears as many times as necessary to refer to all Surfaces making up this Partition. A path similar to the one used to refer to a Room is used to refer to a Surface. Note that a Partition does not refer to the Surfaces that belong to its Aperture; that will be taken care of by the Apertures themselves.
 

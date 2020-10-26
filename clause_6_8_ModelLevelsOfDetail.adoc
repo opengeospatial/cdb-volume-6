@@ -1,10 +1,7 @@
 
 === Model Levels-of-Detail
 
-
 include::requirements/requirements_class05.adoc[]
-
-
 
 A levels-of-detail model structure is essential when the intent is to use a model in a real-time application such as flight simulation. The level-of-detail mechanism provides client-devices with the essential structure for deterministic operation. Deterministic operation can be achieved only if a client-device can:
 
@@ -14,13 +11,11 @@ A levels-of-detail model structure is essential when the intent is to use a mode
 * control run-time publishing processing load and
 * control run-time publishing memory footprint
 
-
 For this reason, it is recommended to create LODs, especially for complex Models, and for models that are used extensively, in great density in the CDB data store. This is most critical for geospecific cultural models (especially in densely modeled geospecific areas of the synthetic environment) since they can consume a significant portion of the paging bandwidth and memory footprint of the client-devices. As a corollary, simple Models should not be made more complex by adding unnecessary level of details. The CDB standard provides rules for determining model complexity, and selecting the appropriate LOD, as defined in Chapter 3 of Volume 1: OGC CDB Core Standard:Model and Physical Database Structure.
 
 OpenFlight LOD nodes now support two methods of specifying the criteria to determine if a level of detail is active, that is if the user application should traverse the node and its children. The first method, the classic one, is to specify the switch in and switch out distances in real world units. Using this method, a level of detail is active when the distance from the viewpoint to the center of the LOD is within the switch-in and switch-out distances. The second method uses the Significant Size associated with the LOD node to determine when to activate the node.
 
 include::requirements/REQ026.adoc[]
-
 
 There are several problems associated with the classic, range-based method. In a visual system for instance, the switching distance should be based on both range and the system resolution of the entire visual system; a database designed to rely solely on a range-based switching criteria is not truly portable, especially if the intent is to use it on systems with wildly different visual resolution. Furthermore, the blending or morphing of models solely based on range criteria can lead to undesirable effects. When the viewpoint moves quickly, the distance over which the model is LOD-transitioning should be large enough to avoid the “popping-in” of the higher LOD version. On the other hand, if the viewpoint is moving very slowly, the distance over which the model is LOD-transitioning should be reduced to avoid the “LOD-ghosting” of the higher LOD version. These two constraints make implicit assumptions on the model’s speed. In applications where the aircraft’s flight regime varies considerably (V22 for example), it is impossible to find a single set of LOD start and end points that simultaneously cater to all flight modes (hover versus cruise). Here again, a database design that directly encodes the start and end points of a model’s LOD transition is not truly portable, because it makes implicit assumptions on the speed it will be used for. Thus, in a tactical fighter application, the start and end points of a model’s LOD transition need to be widely spaced apart to prevent a popping effect at the onset of the LOD transition. Conversely, in a tank application, the start and end points of a model’s LOD transition need to be much more closely spaced to prevent a ghosting effect as the higher LOD model is blended-in. If the client device wants to implement some form of transition between LODs, the criteria should be based on a user-defined duration. Transitions between LODs can involve fading in the next LOD while fading out the current one. That fading operation should not last forever. It should be accomplished in a relative short period of time. The second method to transition from one LOD to the next is to use morphing. In the case of morphing, the transition period is less critical because the client-device (typically an Image Generator) does not blend-in two models together.
 
