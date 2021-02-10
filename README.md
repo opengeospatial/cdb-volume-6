@@ -1,4 +1,4 @@
-# Standard template
+# OGC CDB Volume 6 Openflight
 
 ## Content
 
