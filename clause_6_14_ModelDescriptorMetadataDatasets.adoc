@@ -9,6 +9,10 @@ Each type of 3D Models has its set of ModelDescriptor datasets; they are:
 4.  GTModelInteriorDescriptor
 5.  MModelDescriptor
 
+Similarly for a T2D Model:
+
+1.  T2DModelDescriptor
+
 Each file is needed to summarize and regroup the information concerning one portion of a model, its shell or its interior. The information are collected and stored in an XML file to help client devices implement efficient load management mechanism.
 
 The format of the model descriptor file is as follows:
