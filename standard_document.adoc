@@ -24,7 +24,7 @@
 |External identifier of this OGC(R) document: http://www.opengis.net/doc/BP/CDB/openflight/1.2
 |Internal reference number of this OGC(R) document:    16-009rX
 |Version: 1.3
-|Category: OGC(R) Best Practice
+|Category: OGC(R) Implementation Standard
 |Editor:   Carl Reed; David Graham
 |===
 
@@ -45,11 +45,8 @@
 |*Warning*
 |===
 
-This document defines an OGC Best Practice on a particular technology or approach
-related to an OGC standard. This document is *not* an OGC Standard and may not be
-referred to as an OGC Standard. It is subject to change without notice. However, this
-document is an *official* position of the OGC membership on this particular technology
-topic.
+This document is an OGC Member approved international standard. This document is available on a royalty free, non-discriminatory basis. Recipients of this document are invited to submit, with their comments, notification of any relevant patent rights of which they are aware and to provide supporting documentation.
+
 
 [width = "50%", grid = "none"]
 |===
