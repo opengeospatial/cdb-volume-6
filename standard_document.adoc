@@ -1,5 +1,5 @@
-:Title: Volume 6: OGC CDB Rules for Encoding CDB Models using OpenFlight (Best Practice)
-:titletext: Volume 6: OGC CDB Rules for Encoding CDB Models using OpenFlight (Best Practice)
+:Title: Volume 6: OGC CDB Rules for Encoding CDB Models using OpenFlight
+:titletext: Volume 6: OGC CDB Rules for Encoding CDB Models using OpenFlight
 :doctype: book
 :encoding: utf-8
 :lang: en
