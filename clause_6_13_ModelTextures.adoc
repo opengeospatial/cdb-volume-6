@@ -582,7 +582,7 @@ In the case of the Raster Material dataset (dataset code 005) applied onto the t
 
 ===== Model Heat Map Texture
 
-A Heat Map texture describes the temperature radiated by the surface described by its base textrue (ex. engine). A heat map is stored as an 8-bit single channel texture (a grey-scale image) where texels are mapped to the range 0.0 (ambient temperature) to 1.0 (hot). This texture can be used to simulate IR sensor effects.
+A Heat Map texture describes the temperature radiated by the surface described by its base texture (ex. engine). A heat map is stored as an 8-bit single channel texture (a grey-scale image) where texels are mapped to the range 0.0 (ambient temperature) to 1.0 (hot). This texture can be used to simulate IR sensor effects.
 
 image::images/Sensor-sidebyside.png[image,width=475,height=359]
 [#img_HeatMapSideBySide,reftext='{figure-caption} {counter:figure-num}']
