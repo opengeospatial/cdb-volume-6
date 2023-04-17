@@ -21,6 +21,8 @@ In OpenFlight, several types of textures can be applied in various combinations.
 
 Base textures footnote:[The CDB Standard uses the term “base texture” the same way as OpenFlight and Creator do.] are set of mutually exclusive model textures that provide texture color/intensity modulation for the model. While a model can have many base textures, only one base texture can be referenced and applied to model geometry at a time.
 
+The base texture, by default is meant to represent a diffuse map. In contrast with an Albedo texture, the diffuse texture can contain the effects of how light is scattered across the surface of the object.
+
 The CDB standard supports the following type of Base Textures.
 
 1.  _Year-Round Texture_: A year-round texture used with GTModels, MModels, GSModels, T2DModels and T3DModels. In the case of MModels, base-textures are often replaced with an appropriate Paint Scheme texture (Uniform, Camouflage or Airline).
