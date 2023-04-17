@@ -23,6 +23,17 @@ Base textures footnote:[The CDB Standard uses the term “base texture” the sa
 
 The base texture, by default is meant to represent a diffuse map. In contrast with an Albedo texture, the diffuse texture can contain the effects of how light is scattered across the surface of the object.
 
+To clarify the intended interpretation and rendering result of the base texture when using Physically Based Rendering (PBR) concepts like Roughness and Metalness (RM), the following table provides guidance on the various use-cases. Note: the Ambient occlusion component (O) is left optional.
+
+|===
+|(base) |(O)RM| Albedo| Legacy System | PBR System
+|Y|N|N| Diffuse: Diffuse|Albedo: Diffuse Map (with deriving logic, if supported)
+|Y|Y|N| Diffuse: Diffuse (assuming it is albedo, if supported)| Albedo: Diffuse Map (as-is)
+|Y|Y|Y| Diffuse: Diffuse |Albedo: Albedo Map
+|N|Y|Y|Diffuse: Albedo (with deriving logic, if supported)|Albedo: Albedo Map
+|N|N|Y| Diffuse: Albedo (as-is) |Albedo: Albedo Map
+|===
+
 The CDB standard supports the following type of Base Textures.
 
 1.  _Year-Round Texture_: A year-round texture used with GTModels, MModels, GSModels, T2DModels and T3DModels. In the case of MModels, base-textures are often replaced with an appropriate Paint Scheme texture (Uniform, Camouflage or Airline).
