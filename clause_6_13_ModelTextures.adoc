@@ -21,6 +21,29 @@ In OpenFlight, several types of textures can be applied in various combinations.
 
 Base textures footnote:[The CDB Standard uses the term “base texture” the same way as OpenFlight and Creator do.] are set of mutually exclusive model textures that provide texture color/intensity modulation for the model. While a model can have many base textures, only one base texture can be referenced and applied to model geometry at a time.
 
+The base texture, by default is meant to represent a diffuse map. In contrast with an Albedo texture, the Diffuse base texture only includes light scattered in several directions, excluding light reflected directly like a mirror (specular reflection). Another distinction is that the diffuse base texture may also include baked lighting, shading or ambient occlusions.
+
+To clarify the intended interpretation and rendering result of the base texture when using the Roughness-Metalness (RM) Physically Based Rendering (PBR) model, the following table provides guidance on the various cases where the base (diffuse) and/or albedo texture types are present or absent.
+Note: the Ambient occlusion component (O) is left optional.
+
+
+|===
+|*Diffuse*|*(Occlusion)
+Roughness-
+Metalness Map
+(kind = 62 or (64)63)*|* Albedo Map
+   (kind=10)*|* Legacy System  *|*PBR-Roughness/Metalness Shader*
+
+|*Present*|_Not Present_|_Not Present_|Diffuse: Diffuse (base) Map|Albedo: Diffuse (base) Map^**2**^
+|*Present*|*Present*|_Not Present_|Diffuse: Diffuse (base) Map^**1**^|Albedo: Diffuse (base) Map^**3**^
+|*Present*|*Present*|*Present*|Diffuse: Diffuse (base) Map|Albedo: Albedo Map
+|_Not Present_|*Present*|*Present*|Diffuse: Albedo Map^**1**^|Albedo: Albedo Map
+|_Not Present_|_Not Present_|*Present*|Diffuse: Albedo Map^**3**^|Albedo: Albedo Map 
+|===
+1: automatically adding ambient occlusion and removing specular reflectance, if supported
+2: automatically removing ambient occlusion and adding specular reflectance, if supported
+3: Using the map as-is
+
 The CDB standard supports the following type of Base Textures.
 
 1.  _Year-Round Texture_: A year-round texture used with GTModels, MModels, GSModels, T2DModels and T3DModels. In the case of MModels, base-textures are often replaced with an appropriate Paint Scheme texture (Uniform, Camouflage or Airline).
@@ -579,3 +602,38 @@ The <Material> tag presented in section 6.5.3 is a high level mean of providing 
 In short, the <Material> tag supports a polygon-based approach of sensor client devices such as FLIR, NVG, and RADAR. A Material texture is a texel-based approach supporting an implementation of such client devices with a much higher resolution.
 
 In the case of the Raster Material dataset (dataset code 005) applied onto the terrain, it is conceivable that multiple layers and mixtures of materials are required to represent the rich variety of materials found on the earth surface. However, for Models, a single material layer is probably adequate for the vast majority of man-made objects.
+
+===== Model Heat Map Texture
+
+A Heat Map texture describes the temperature radiated by the surface described by its base texture (ex. engine). A heat map is stored as an 8-bit single channel texture (a grey-scale image) where texels are mapped to the range 0.0 (ambient temperature) to 1.0 (hot). This texture can be used to simulate IR sensor effects.
+
+image::images/Sensor-sidebyside.png[image,width=475,height=359]
+[#img_HeatMapSideBySide,reftext='{figure-caption} {counter:figure-num}']
+*_{figure-caption}{counter:figure-num}. Base with corresponding heap map texture_*
+
+
+image::images/Sensor-Rendering.png[image,width=475,height=359]
+[#img_RenderedHeatMapinasimulatedIRsensor,reftext='{figure-caption} {counter:figure-num}']
+*_{figure-caption}{counter:figure-num}. Rendered Heat Map in a simulated IR sensor_*
+
+===== Model Decal Texture
+
+A decal texture is overlayed on top of the base texture to provide extra detail (sticker, crack, etc.)
+
+===== Model Mask Texture
+
+A mask texture is used to control the transparancy of its base texture, independently of its mapping. The mask texture will multiply the transparency of the base texture. A mask texture is stored as an 8-bit single channel texture (a grey-scale image) where texels are mapped to the range 0.0 (0-transparent) to 1.0 (1-opaque). 
+
+Below is an example of a mask texture that can be used to feather the hard edges from a base texture.
+
+image::images/Mask.png[image,width=475,height=359]
+[#img_Mask,reftext='{figure-caption} {counter:figure-num}']
+*_{figure-caption}{counter:figure-num}. Mask Texture_*
+
+===== Model ORM Texture
+
+An ORM texture is used for Physically Based Rendering (PBR) effects. An ORM texture is a 3 channel packed texture defining the Ambient Occlusion (O), Roughness \(R) and Metalness (M) of the surface.
+
+image::images/ORM.png[image,width=475,height=359]
+[#img_ORM,reftext='{figure-caption} {counter:figure-num}']
+*_{figure-caption}{counter:figure-num}. Three channels viewed indepdendently - Ambient Occlusion(AO), Roughness\(R) and Metalness(M)_*
