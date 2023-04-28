@@ -21,48 +21,28 @@ In OpenFlight, several types of textures can be applied in various combinations.
 
 Base textures footnote:[The CDB Standard uses the term “base texture” the same way as OpenFlight and Creator do.] are set of mutually exclusive model textures that provide texture color/intensity modulation for the model. While a model can have many base textures, only one base texture can be referenced and applied to model geometry at a time.
 
-The base texture, by default is meant to represent a diffuse map. In contrast with an Albedo texture, the diffuse texture can contain the effects of how light is scattered across the surface of the object.
+The base texture, by default is meant to represent a diffuse map. In contrast with an Albedo texture, the Diffuse base texture only includes light scattered in several directions, excluding light reflected directly like a mirror (specular reflection). Another distinction is that the diffuse base texture may also include baked lighting, shading or ambient occlusions.
 
-To clarify the intended interpretation and rendering result of the base texture when using Physically Based Rendering (PBR) concepts like Roughness and Metalness (RM), the following table provides guidance on the various use-cases. Note: the Ambient occlusion component (O) is left optional.
+To clarify the intended interpretation and rendering result of the base texture when using the Roughness-Metalness (RM) Physically Based Rendering (PBR) model, the following table provides guidance on the various cases where the base (diffuse) and/or albedo texture types are present or absent.
+Note: the Ambient occlusion component (O) is left optional.
 
-[width="100%",cols="12%,14%,17%,25%,32%",options="header",]
+
 |===
-|Base a|
-(O)RM texture
+|*Diffuse*|*(Occlusion)
+Roughness-
+Metalness Map
+(kind = 62 or (64)63)*|* Albedo Map
+   (kind=10)*|* Legacy System  *|*PBR-Roughness/Metalness Shader*
 
-(additional layer)
-
-a|
-Albedo texture
-
-Used (explicit)
-
-|Legacy System |PBR System
-|Kind=1 |N |N |Diffuse |Diffuse
-
-|Kind=1 |Y |N |Diffuse (assuming it is albedo, if supported) |Albedo + (O)RM
-
-|Kind=1 |Y a|
-Y
-
-(additional layer)
-
-|Diffuse |Albedo + (O)RM
-
-a|
-Albedo
-
-(Kind=10)
-
-|Y |Y |Albedo (with deriving logic, if supported) |Albedo + (O)RM
-
-a|
-Albedo
-
-(Kind=10)
-
-|N |Y |Albedo (as-is) |Albedo
+|*Present*|_Not Present_|_Not Present_|Diffuse: Diffuse (base) Map|Albedo: Diffuse (base) Map^**2**^
+|*Present*|*Present*|_Not Present_|Diffuse: Diffuse (base) Map^**1**^|Albedo: Diffuse (base) Map^**3**^
+|*Present*|*Present*|*Present*|Diffuse: Diffuse (base) Map|Albedo: Albedo Map
+|_Not Present_|*Present*|*Present*|Diffuse: Albedo Map^**1**^|Albedo: Albedo Map
+|_Not Present_|_Not Present_|*Present*|Diffuse: Albedo Map^**3**^|Albedo: Albedo Map 
 |===
+1: automatically adding ambient occlusion and removing specular reflectance, if supported
+2: automatically removing ambient occlusion and adding specular reflectance, if supported
+3: Using the map as-is
 
 The CDB standard supports the following type of Base Textures.
 
