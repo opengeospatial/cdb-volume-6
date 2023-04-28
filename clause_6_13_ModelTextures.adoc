@@ -40,9 +40,10 @@ Metalness Map
 |_Not Present_|*Present*|*Present*|Diffuse: Albedo Map^**1**^|Albedo: Albedo Map
 |_Not Present_|_Not Present_|*Present*|Diffuse: Albedo Map^**3**^|Albedo: Albedo Map 
 |===
-1: automatically adding ambient occlusion and removing specular reflectance, if supported
-2: automatically removing ambient occlusion and adding specular reflectance, if supported
-3: Using the map as-is
+[%hardbreaks]
+^1^ automatically adding ambient occlusion and removing specular reflectance, if supported
+^2^ automatically removing ambient occlusion and adding specular reflectance, if supported
+^3^ Using the map as-is
 
 The CDB standard supports the following type of Base Textures.
 
