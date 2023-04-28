@@ -36,7 +36,7 @@
 [cols = "^", frame = "none", grid = "none"]
 |===
 |*Copyright notice*
-|Copyright (C) 2021 Open Geospatial Consortium
+|Copyright (C) 2023 Open Geospatial Consortium
 |To obtain additional rights of use, visit http://www.ogc.org/legal/
 |===
 
@@ -50,9 +50,9 @@ This document is an OGC Member approved international standard. This document is
 
 [width = "50%", grid = "none"]
 |===
-|Document type:   	OGC® Best Practice
+|Document type:   	OGC® Implementation Standard
 |Document subtype:   
-|Document stage:   	Approved
+|Document stage:   	SWG Draft
 |Document language: 	English
 |===
 
