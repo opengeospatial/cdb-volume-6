@@ -18,13 +18,13 @@
 |===
 |{set:cellbgcolor:#FFFFFF}
 |[big]*Open Geospatial Consortium*
-|Submission Date: XXXX-XX-XX
-|Approval Date:   XXXX-XX-XX
-|Publication Date:   XXXX-XX-XX
+|Submission Date: 2023-XX-XX
+|Approval Date:   2023-XX-XX
+|Publication Date:   2023-XX-XX
 |External identifier of this OGC(R) document: http://www.opengis.net/doc/BP/CDB/openflight/1.3
-|Internal reference number of this OGC(R) document:    16-009rX
+|Internal reference number of this OGC(R) document:    16-009r6
 |Version: 1.3
-|Category: OGC(R) Implementation Standard
+|Category: OGC(R) Best Practice
 |Editor:   Carl Reed; David Graham
 |===
 
@@ -45,7 +45,11 @@
 |*Warning*
 |===
 
-This document is an OGC Member approved international standard. This document is available on a royalty free, non-discriminatory basis. Recipients of this document are invited to submit, with their comments, notification of any relevant patent rights of which they are aware and to provide supporting documentation.
+This document defines an OGC Best Practice on a particular technology or approach
+related to an OGC standard. This document is *not* an OGC Standard and may not be
+referred to as an OGC Standard. It is subject to change without notice. However, this
+document is an *official* position of the OGC membership on this particular technology
+topic.
 
 
 [width = "50%", grid = "none"]
