@@ -24,13 +24,8 @@ Organization name(s)
 
 * CAE Inc.
 * Carl Reed, OGC Individual Member
-* Envitia, Ltd
-* Glen Johnson, OGC Individual Member
-* KaDSci, LLC
-* Laval University
-* Open Site Plan
-* University of Calgary
-* UK Met Office
+
+[red]#*_Placeholder# for the list of CDB SWG Voting Members who cast a ballot in the SWG eVote approving the draft document for submission to the OAB and request for public comment_*
 
 [big]*v.     Submitters*
 
